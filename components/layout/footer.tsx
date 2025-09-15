@@ -1,7 +1,8 @@
+"use client";
+
 import Link from "next/link"
 import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
-;("use client")
 import { useLanguage } from "@/contexts/language-context"
 
 export function Footer() {
