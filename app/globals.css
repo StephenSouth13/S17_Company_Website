@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for S17 premium dark theme */
+  --background: #121212; /* Dark gray for primary background */
+  --foreground: #e5e5e5; /* Light gray for primary text */
+  --card: #1e3a8a; /* Dark blue for card backgrounds */
+  --card-foreground: #ffffff; /* White for text on cards */
+  --popover: #1e3a8a; /* Dark blue for popover backgrounds */
+  --popover-foreground: #e5e5e5; /* Light gray for text in popovers */
+  --primary: #3b82f6; /* Metallic blue for call-to-action buttons */
+  --primary-foreground: #ffffff; /* White for text on primary buttons */
+  --secondary: #ffffff; /* White for secondary buttons */
+  --secondary-foreground: #1e3a8a; /* Dark blue for text on secondary buttons */
+  --muted: #e5e5e5; /* Light gray for muted text */
+  --muted-foreground: #121212; /* Dark gray for text on muted backgrounds */
+  --accent: #3b82f6; /* Metallic blue for highlights */
+  --accent-foreground: #ffffff; /* White for text on accent backgrounds */
+  --destructive: #dc2626; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White for text on destructive buttons */
+  --border: #e5e5e5; /* Light gray for borders */
+  --input: #1e3a8a; /* Dark blue for input backgrounds */
+  --ring: #3b82f6; /* Metallic blue for focus rings */
+  --chart-1: #1e3a8a; /* Dark blue for chart colors */
+  --chart-2: #3b82f6; /* Metallic blue for chart accents */
+  --chart-3: #ffffff; /* White for chart text */
+  --chart-4: #e5e5e5; /* Light gray for additional chart elements */
+  --chart-5: #dc2626; /* Red for alert chart elements */
+  --radius: 0.5rem; /* Rounded corners for buttons and cards */
+  --sidebar: #1e3a8a; /* Dark blue for sidebar background */
+  --sidebar-foreground: #e5e5e5; /* Light gray for sidebar text */
+  --sidebar-primary: #3b82f6; /* Metallic blue for primary sidebar elements */
+  --sidebar-primary-foreground: #ffffff; /* White for text on primary sidebar elements */
+  --sidebar-accent: #3b82f6; /* Metallic blue for accent elements in sidebar */
+  --sidebar-accent-foreground: #ffffff; /* White for text on sidebar accent elements */
+  --sidebar-border: #e5e5e5; /* Light gray for sidebar borders */
+  --sidebar-ring: #3b82f6; /* Metallic blue for sidebar focus rings */
+}
+
+.dark {
+  /* Enhanced dark mode tokens for premium feel */
+  --background: #0b0f14; /* Even darker background for premium feel */
+  --foreground: #e8eef6; /* Slightly blue-tinted white for text */
+  --card: #1a2332; /* Dark blue-gray for cards */
+  --card-foreground: #e8eef6; /* Blue-tinted white for card text */
+  --popover: #1a2332; /* Dark blue-gray for popovers */
+  --popover-foreground: #e8eef6; /* Blue-tinted white for popover text */
+  --primary: #00a3ff; /* Bright metallic blue for CTAs */
+  --primary-foreground: #ffffff; /* Pure white for primary button text */
+  --secondary: #2a3441; /* Darker secondary background */
+  --secondary-foreground: #9aa7b3; /* Muted blue-gray text */
+  --muted: #2a3441; /* Muted background */
+  --muted-foreground: #9aa7b3; /* Muted text color */
+  --accent: #7ce0fd; /* Light blue accent for highlights */
+  --accent-foreground: #0b0f14; /* Dark text on accent */
+  --destructive: #ef4444; /* Bright red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #2a3441; /* Dark border color */
+  --input: #1a2332; /* Dark input background */
+  --ring: #00a3ff; /* Bright blue focus ring */
+  --chart-1: #00a3ff; /* Primary chart color */
+  --chart-2: #7ce0fd; /* Secondary chart color */
+  --chart-3: #e8eef6; /* Chart text color */
+  --chart-4: #9aa7b3; /* Muted chart elements */
+  --chart-5: #ef4444; /* Alert chart color */
+  --sidebar: #1a2332; /* Dark sidebar background */
+  --sidebar-foreground: #e8eef6; /* Light sidebar text */
+  --sidebar-primary: #00a3ff; /* Primary sidebar elements */
+  --sidebar-primary-foreground: #ffffff; /* White text on primary sidebar */
+  --sidebar-accent: #7ce0fd; /* Accent sidebar elements */
+  --sidebar-accent-foreground: #0b0f14; /* Dark text on accent sidebar */
+  --sidebar-border: #2a3441; /* Sidebar border */
+  --sidebar-ring: #00a3ff; /* Sidebar focus ring */
+}
+
+@theme inline {
+  /* Updated font variables for Work Sans and Open Sans */
+  --font-sans: "Work Sans", var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Added custom scrollbar styling for premium feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* Added custom animations for premium interactions */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Added gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
