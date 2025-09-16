@@ -6,20 +6,23 @@ import { InvestmentProjects } from "@/components/sections/investment-projects"
 import { PartnersSection } from "@/components/sections/partners-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { CTASection } from "@/components/sections/cta-section"
+import { Providers } from './providers'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <FeaturedProducts />
-        <InvestmentProjects />
-        <PartnersSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <Providers>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <FeaturedProducts />
+          <InvestmentProjects />
+          <PartnersSection />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
+    </Providers>
   )
 }

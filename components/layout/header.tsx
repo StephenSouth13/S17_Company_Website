@@ -1,16 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Search, Menu, X, Building2 } from "lucide-react"
+import { Search, Menu, X, Building2, Sun, Moon } from "lucide-react"
 import { UserMenu } from "@/components/auth/user-menu"
 import { CartSidebar } from "@/components/cart/cart-sidebar"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/ui/language-switcher"
+import { useTheme } from "next-themes"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
   const { t } = useLanguage()
 
   const navigation = [
@@ -20,6 +23,14 @@ export function Header() {
     { name: t.nav.about, href: "/about" },
     { name: t.nav.contact, href: "/contact" },
   ]
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -42,7 +53,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors hover:text-primary"
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
               >
                 {item.name}
               </Link>
@@ -63,6 +74,17 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-4">
+            {/* Dark Mode Toggle */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-9 w-9 p-0"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              <span className="sr-only">Toggle theme</span>
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+            
             <LanguageSwitcher />
 
             {/* Cart */}
