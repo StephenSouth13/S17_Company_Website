@@ -1,13 +1,15 @@
+/* app/globals.css */
+
+/* Dùng cú pháp của Tailwind CSS v3 để đảm bảo tương thích */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Import các thư viện bên ngoài */
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  /* Light Theme */
+  /* Light Theme - Các giá trị màu mặc định */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -44,7 +46,7 @@
 }
 
 .dark {
-  /* Dark Theme */
+  /* Dark Theme - Các giá trị màu sẽ ghi đè lên mặc định khi có class .dark */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
