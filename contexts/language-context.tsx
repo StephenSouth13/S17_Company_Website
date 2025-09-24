@@ -18,14 +18,15 @@ interface LanguageProviderProps {
 export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguageState] = useState<Language>("en")
   const [t, setTranslations] = useState<Translations>(getTranslations("en"))
+  const [loaded, setLoaded] = useState(false) // tránh flicker
 
   useEffect(() => {
-    // Load language from localStorage on mount
-    const savedLanguage = localStorage.getItem("language") as Language
+    const savedLanguage = localStorage.getItem("language") as Language | null
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "vi")) {
       setLanguageState(savedLanguage)
       setTranslations(getTranslations(savedLanguage))
     }
+    setLoaded(true)
   }, [])
 
   const setLanguage = (newLanguage: Language) => {
@@ -34,7 +35,16 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     localStorage.setItem("language", newLanguage)
   }
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  if (!loaded) {
+    // 👇 tránh render chữ EN rồi đổi sang VI gây nháy
+    return null
+  }
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
 export function useLanguage() {

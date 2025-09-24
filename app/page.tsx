@@ -15,7 +15,7 @@ export default function HomePage() {
         <Header />
         <main>
           <HeroSection />
-          <AboutSection />
+         
           <FeaturedProducts />
           <InvestmentProjects />
           <PartnersSection />

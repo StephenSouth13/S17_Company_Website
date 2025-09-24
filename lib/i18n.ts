@@ -1,266 +1,265 @@
-export type Language = "en" | "vi"
+export type Language = "en" | "vi";
 
 export interface Translations {
   // Navigation
   nav: {
-    home: string
-    products: string
-    projects: string
-    about: string
-    contact: string
-    login: string
-    register: string
-    profile: string
-    cart: string
-    logout: string
-  }
+    home: string;
+    products: string;
+    projects: string;
+    about: string;
+    contact: string;
+    login: string;
+    register: string;
+    profile: string;
+    cart: string;
+    logout: string;
+  };
 
   // Homepage
   home: {
     hero: {
-      title: string
-      subtitle: string
-      cta: string
-      learnMore: string
-    }
+      title: string;
+      subtitle: string;
+      cta: string;
+      learnMore: string;
+    };
     about: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     featuredProducts: {
-      title: string
-      subtitle: string
-      viewAll: string
-    }
+      title: string;
+      subtitle: string;
+      viewAll: string;
+    };
     projects: {
-      title: string
-      subtitle: string
-      viewAll: string
-    }
+      title: string;
+      subtitle: string;
+      viewAll: string;
+    };
     partners: {
-      title: string
-    }
+      title: string;
+    };
     cta: {
-      title: string
-      subtitle: string
-      newsletter: string
-      explore: string
-    }
-  }
+      title: string;
+      subtitle: string;
+      newsletter: string;
+      explore: string;
+    };
+  };
 
   // Products
   products: {
-    title: string
-    searchPlaceholder: string
+    title: string;
+    searchPlaceholder: string;
     filters: {
-      category: string
-      priceRange: string
-      brand: string
-      rating: string
-      sortBy: string
-    }
+      category: string;
+      priceRange: string;
+      brand: string;
+      rating: string;
+      sortBy: string;
+    };
     sortOptions: {
-      newest: string
-      priceAsc: string
-      priceDesc: string
-      rating: string
-      popular: string
-    }
-    noResults: string
-    clearFilters: string
-    addToCart: string
-    viewDetails: string
-    inStock: string
-    outOfStock: string
-  }
+      newest: string;
+      priceAsc: string;
+      priceDesc: string;
+      rating: string;
+      popular: string;
+    };
+    noResults: string;
+    clearFilters: string;
+    addToCart: string;
+    viewDetails: string;
+    inStock: string;
+    outOfStock: string;
+  };
 
   // Projects
   projects: {
-    title: string
-    subtitle: string
-    searchPlaceholder: string
+    title: string;
+    subtitle: string;
+    searchPlaceholder: string;
     filters: {
-      category: string
-      status: string
-    }
+      category: string;
+      status: string;
+    };
     categories: {
-      all: string
-      realEstate: string
-      technology: string
-      manufacturing: string
-      energy: string
-      healthcare: string
-      finance: string
-    }
+      all: string;
+      realEstate: string;
+      technology: string;
+      manufacturing: string;
+      energy: string;
+      healthcare: string;
+      finance: string;
+    };
     statuses: {
-      all: string
-      active: string
-      completed: string
-      planning: string
-      onHold: string
-    }
+      all: string;
+      active: string;
+      completed: string;
+      planning: string;
+      onHold: string;
+    };
     details: {
-      investment: string
-      returns: string
-      duration: string
-      location: string
-      investors: string
-      risk: string
-      minInvestment: string
-      progress: string
-      viewDetails: string
-      investNow: string
-      backToProjects: string
-      keyFeatures: string
-      financialProjections: string
-      projectTeam: string
-      riskFactors: string
-      projectDetails: string
-      startDate: string
-      endDate: string
-      projectManager: string
-      totalInvestors: string
-      fundingProgress: string
-      raised: string
-      target: string
-    }
+      investment: string;
+      returns: string;
+      duration: string;
+      location: string;
+      investors: string;
+      risk: string;
+      minInvestment: string;
+      progress: string;
+      viewDetails: string;
+      investNow: string;
+      backToProjects: string;
+      keyFeatures: string;
+      financialProjections: string;
+      projectTeam: string;
+      riskFactors: string;
+      projectDetails: string;
+      startDate: string;
+      endDate: string;
+      projectManager: string;
+      totalInvestors: string;
+      fundingProgress: string;
+      raised: string;
+      target: string;
+    };
     riskLevels: {
-      low: string
-      medium: string
-      high: string
-    }
-  }
+      low: string;
+      medium: string;
+      high: string;
+    };
+  };
 
   // Authentication
   auth: {
     login: {
-      title: string
-      email: string
-      password: string
-      submit: string
-      forgotPassword: string
-      noAccount: string
-      signUp: string
-      orContinueWith: string
-    }
+      title: string;
+      email: string;
+      password: string;
+      submit: string;
+      forgotPassword: string;
+      noAccount: string;
+      signUp: string;
+      orContinueWith: string;
+    };
     register: {
-      title: string
-      firstName: string
-      lastName: string
-      email: string
-      password: string
-      confirmPassword: string
-      submit: string
-      hasAccount: string
-      signIn: string
-      terms: string
-    }
+      title: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      password: string;
+      confirmPassword: string;
+      submit: string;
+      hasAccount: string;
+      signIn: string;
+      terms: string;
+    };
     profile: {
-      title: string
-      personalInfo: string
-      orderHistory: string
-      investments: string
-      notifications: string
-      security: string
-      updateProfile: string
-      changePassword: string
-    }
-  }
+      title: string;
+      personalInfo: string;
+      orderHistory: string;
+      investments: string;
+      notifications: string;
+      security: string;
+      updateProfile: string;
+      changePassword: string;
+    };
+  };
 
   // Cart & Checkout
   cart: {
-    title: string
-    empty: string
-    continueShopping: string
-    quantity: string
-    remove: string
-    subtotal: string
-    tax: string
-    shipping: string
-    total: string
-    checkout: string
-
+    title: string;
+    empty: string;
+    continueShopping: string;
+    quantity: string;
+    remove: string;
+    subtotal: string;
+    tax: string;
+    shipping: string;
+    total: string;
+    // The `checkout` key is now an object, no longer a string
     checkout: {
-      title: string
-      shippingInfo: string
-      paymentMethod: string
-      orderSummary: string
-      placeOrder: string
-      firstName: string
-      lastName: string
-      address: string
-      city: string
-      postalCode: string
-      phone: string
-      cardNumber: string
-      expiryDate: string
-      cvv: string
-      orderSuccess: string
-      orderNumber: string
-    }
-  }
+      title: string;
+      shippingInfo: string;
+      paymentMethod: string;
+      orderSummary: string;
+      placeOrder: string;
+      firstName: string;
+      lastName: string;
+      address: string;
+      city: string;
+      postalCode: string;
+      phone: string;
+      cardNumber: string;
+      expiryDate: string;
+      cvv: string;
+      orderSuccess: string;
+      orderNumber: string;
+    };
+  };
 
   // Common
   common: {
-    loading: string
-    error: string
-    success: string
-    cancel: string
-    save: string
-    edit: string
-    delete: string
-    confirm: string
-    back: string
-    next: string
-    previous: string
-    search: string
-    filter: string
-    sort: string
-    grid: string
-    list: string
-    viewMore: string
-    readMore: string
-    contactUs: string
-    getStarted: string
-    learnMore: string
-    subscribe: string
-    email: string
-    phone: string
-    address: string
-    followUs: string
-    copyright: string
-  }
+    loading: string;
+    error: string;
+    success: string;
+    cancel: string;
+    save: string;
+    edit: string;
+    delete: string;
+    confirm: string;
+    back: string;
+    next: string;
+    previous: string;
+    search: string;
+    filter: string;
+    sort: string;
+    grid: string;
+    list: string;
+    viewMore: string;
+    readMore: string;
+    contactUs: string;
+    getStarted: string;
+    learnMore: string;
+    subscribe: string;
+    email: string;
+    phone: string;
+    address: string;
+    followUs: string;
+    copyright: string;
+  };
 
   // Footer
   footer: {
     company: {
-      title: string
-      about: string
-      careers: string
-      news: string
-      contact: string
-    }
+      title: string;
+      about: string;
+      careers: string;
+      news: string;
+      contact: string;
+    };
     products: {
-      title: string
-      catalog: string
-      newArrivals: string
-      bestsellers: string
-      deals: string
-    }
+      title: string;
+      catalog: string;
+      newArrivals: string;
+      bestsellers: string;
+      deals: string;
+    };
     support: {
-      title: string
-      help: string
-      shipping: string
-      returns: string
-      faq: string
-    }
+      title: string;
+      help: string;
+      shipping: string;
+      returns: string;
+      faq: string;
+    };
     legal: {
-      title: string
-      privacy: string
-      terms: string
-      cookies: string
-    }
-  }
+      title: string;
+      privacy: string;
+      terms: string;
+      cookies: string;
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -433,7 +432,7 @@ export const translations: Record<Language, Translations> = {
       tax: "Tax",
       shipping: "Shipping",
       total: "Total",
-      checkout: "Checkout",
+      // This `checkout` key is no longer a string and is now correctly nested
       checkout: {
         title: "Checkout",
         shippingInfo: "Shipping Information",
@@ -681,7 +680,7 @@ export const translations: Record<Language, Translations> = {
       tax: "Thuế",
       shipping: "Phí Vận Chuyển",
       total: "Tổng Cộng",
-      checkout: "Thanh Toán",
+      // This `checkout` key is no longer a string and is now correctly nested
       checkout: {
         title: "Thanh Toán",
         shippingInfo: "Thông Tin Giao Hàng",
@@ -760,8 +759,8 @@ export const translations: Record<Language, Translations> = {
       },
     },
   },
-}
+};
 
 export function getTranslations(language: Language): Translations {
-  return translations[language] || translations.en
+  return translations[language] || translations.en;
 }

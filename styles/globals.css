@@ -1,8 +1,9 @@
 /* app/globals.css */
 
-/* Dùng cú pháp của Tailwind CSS v3 để đảm bảo tương thích */
-@tailwind base;
-@tailwind components;
+/* Import preflight (reset CSS) thay cho @tailwind base */
+@import "tailwindcss/preflight";
+
+/* Import utilities */
 @tailwind utilities;
 
 /* Import các thư viện bên ngoài */

@@ -1,19 +1,23 @@
-// app/providers.tsx
-"use client";
+"use client"
 
-import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
+import { ThemeProvider } from "next-themes"
+import { LanguageProvider } from "@/contexts/language-context"
+import { CartProvider } from "@/components/cart/cart-context"
+import { type ReactNode } from "react"
 
-// Đảm bảo rằng component nhận props children
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider 
-      attribute="class" 
-      defaultTheme="light" 
-      enableSystem={false} 
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
       disableTransitionOnChange
     >
-      {children}
+      <LanguageProvider>
+        <CartProvider>
+          {children}
+        </CartProvider>
+      </LanguageProvider>
     </ThemeProvider>
-  );
+  )
 }

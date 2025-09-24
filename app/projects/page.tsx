@@ -1,3 +1,5 @@
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
 import { ProjectsShowcase } from "@/components/projects/projects-showcase"
 import type { Metadata } from "next"
 
@@ -8,8 +10,15 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-dark-primary">
-      <ProjectsShowcase />
-    </main>
+    // Thêm div bọc toàn bộ nội dung
+    <div className="min-h-screen bg-dark-primary">
+      {/* Thêm Header nếu cần, nhưng trong ví dụ của bạn thì không có */}
+      <Header />
+      <main>
+        <ProjectsShowcase />
+      </main>
+      {/* Thêm component Footer ở cuối */}
+      <Footer />
+    </div>
   )
 }
