@@ -9,6 +9,7 @@ import { CartSidebar } from "@/components/cart/cart-sidebar"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/ui/language-switcher"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -37,15 +38,14 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary animate-glow">
-              <Building2 className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold gradient-text">S17</span>
-              <span className="text-xs text-muted-foreground hidden sm:block">Trading</span>
-            </div>
-          </Link>
+          <Link href="/">
+          <Image
+            src="/s17-logo.png" // Đường dẫn tới file logo trong thư mục public
+            alt="S17 Trading Logo"
+            width={100}
+            height={30}
+          />
+        </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
