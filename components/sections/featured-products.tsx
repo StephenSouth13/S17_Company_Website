@@ -2,54 +2,57 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, ShoppingCart, Eye, Heart } from "lucide-react"
+import Link from "next/link"
 
 export function FeaturedProducts() {
   const products = [
     {
       id: 1,
-      name: "Laptop Gaming ROG Strix",
-      price: "45,990,000",
-      originalPrice: "52,990,000",
+      name: "Cơm khay",
+      price: "42.000 - 49.000",
+      originalPrice: null,
       rating: 4.8,
-      reviews: 124,
-      image: "/gaming-laptop-with-rgb-lighting.jpg",
-      badge: "Bán chạy",
-      discount: "13%",
+      reviews: 25,
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      badge: "Đồ ăn thuần thực vật",
+      discount: null,
     },
     {
       id: 2,
-      name: "iPhone 15 Pro Max",
-      price: "34,990,000",
+      name: "Thực phẩm thuần thực vật",
+      price: "18.000 - 55.000",
       originalPrice: null,
-      rating: 4.9,
-      reviews: 89,
-      image: "/iphone-15-pro-max-titanium.png",
-      badge: "Mới nhất",
+      rating: 4.5,
+      reviews: 40,
+      image: "https://images.unsplash.com/photo-1629853316148-5c4d0e6c6411?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      badge: "Sản phẩm lon",
       discount: null,
     },
     {
       id: 3,
-      name: "MacBook Air M3",
-      price: "28,990,000",
-      originalPrice: "31,990,000",
-      rating: 4.7,
-      reviews: 156,
-      image: "/macbook-air-m3-silver.jpg",
-      badge: "Giảm giá",
-      discount: "9%",
-    },
-    {
-      id: 4,
-      name: "Samsung Galaxy S24 Ultra",
-      price: "29,990,000",
+      name: "Trà trái cây",
+      price: "25.000 - 45.000",
       originalPrice: null,
-      rating: 4.6,
-      reviews: 203,
-      image: "/samsung-galaxy-s24-ultra-black.jpg",
-      badge: "Cao cấp",
+      rating: 4.9,
+      reviews: 12,
+      image: "https://images.unsplash.com/photo-1596803244243-774b76a086de?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      badge: "Trà trái cây",
       discount: null,
     },
-  ]
+  ];
+  
+  const getBadgeColor = (badge: string) => {
+    switch (badge) {
+      case "Đồ ăn thuần thực vật":
+        return "bg-green-500/10 text-green-500 border-green-500/20"
+      case "Sản phẩm lon":
+        return "bg-blue-500/10 text-blue-500 border-blue-500/20"
+      case "Trà trái cây":
+        return "bg-orange-500/10 text-orange-500 border-orange-500/20"
+      default:
+        return "bg-gray-500/10 text-gray-500 border-gray-500/20"
+    }
+  }
 
   return (
     <section className="py-24">
@@ -61,13 +64,12 @@ export function FeaturedProducts() {
               Sản phẩm <span className="gradient-text">nổi bật</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Khám phá những sản phẩm công nghệ hàng đầu với chất lượng được đảm bảo và giá cả cạnh tranh nhất thị
-              trường.
+              Khám phá các sản phẩm thuần thực vật tươi ngon, chất lượng được đảm bảo.
             </p>
           </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {products.map((product) => (
               <Card
                 key={product.id}
@@ -80,17 +82,10 @@ export function FeaturedProducts() {
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-3 left-3">
-                    <Badge variant="secondary" className="bg-primary text-primary-foreground">
+                    <Badge variant="secondary" className={getBadgeColor(product.badge)}>
                       {product.badge}
                     </Badge>
                   </div>
-                  {product.discount && (
-                    <div className="absolute top-3 right-3">
-                      <Badge variant="destructive" className="bg-red-500 text-white">
-                        -{product.discount}
-                      </Badge>
-                    </div>
-                  )}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="flex space-x-2">
                       <Button size="sm" variant="secondary" className="h-8 w-8 p-0">
@@ -103,9 +98,11 @@ export function FeaturedProducts() {
                   </div>
                 </div>
                 <CardContent className="p-4 space-y-3">
-                  <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
+                  <Link href={`/products/${product.id}`}>
+                    <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">
+                      {product.name}
+                    </h3>
+                  </Link>
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
@@ -122,9 +119,6 @@ export function FeaturedProducts() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
                       <span className="text-lg font-bold text-primary">{product.price}₫</span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-muted-foreground line-through">{product.originalPrice}₫</span>
-                      )}
                     </div>
                   </div>
                 </CardContent>
@@ -140,10 +134,18 @@ export function FeaturedProducts() {
 
           {/* View All Button */}
           <div className="text-center">
-            <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/10 bg-transparent">
-              Xem tất cả sản phẩm
-            </Button>
-          </div>
+        {/* Thay Button bằng thẻ a và thêm href */}
+        <Button
+          asChild // asChild giúp Button render ra thẻ a
+          size="lg"
+          variant="outline"
+          className="border-primary/20 hover:bg-primary/10 bg-transparent"
+        >
+          <a href="/products">
+            Xem tất cả sản phẩm
+          </a>
+        </Button>
+      </div>
         </div>
       </div>
     </section>

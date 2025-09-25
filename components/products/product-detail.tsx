@@ -15,50 +15,44 @@ export function ProductDetail({ productId }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const [selectedImage, setSelectedImage] = useState(0)
 
-  // Mock product data - in real app, fetch based on productId
+  // Dữ liệu mockup mới
   const product = {
     id: 1,
-    name: "MacBook Pro 16-inch M3 Max",
-    price: "89,990,000",
-    originalPrice: "94,990,000",
-    rating: 4.9,
-    reviews: 156,
+    name: "Cơm khay thuần thực vật",
+    price: "42,000",
+    originalPrice: "49,000",
+    rating: 5,
+    reviews: 10,
     images: [
-      "/macbook-pro-16-m3-max.jpg",
-      "/macbook-pro-16-m3-max-side.jpg",
-      "/macbook-pro-16-m3-max-keyboard.jpg",
-      "/macbook-pro-16-m3-max-ports.jpg",
+      "/com-khay-mockup-1.jpg",
+      "/com-khay-mockup-2.jpg",
+      "/com-khay-mockup-3.jpg",
     ],
-    badge: "Mới nhất",
-    discount: "5%",
-    category: "Laptop",
-    brand: "Apple",
-    description:
-      "MacBook Pro 16-inch với chip M3 Max mang đến hiệu suất vượt trội cho các tác vụ chuyên nghiệp. Màn hình Liquid Retina XDR 16.2 inch với độ sáng lên đến 1600 nits, hỗ trợ dải màu P3 rộng và HDR10.",
+    badge: "Đồ ăn thuần thực vật",
+    description: "Cơm khay dùng ngay. Có 2 loại: cơm trắng & cơm gạo lứt.",
     specs: [
-      { label: "Chip", value: "Apple M3 Max với CPU 12 lõi và GPU 38 lõi" },
-      { label: "Bộ nhớ", value: "32GB RAM thống nhất" },
-      { label: "Lưu trữ", value: "1TB SSD" },
-      { label: "Màn hình", value: "16.2 inch Liquid Retina XDR (3456 x 2234)" },
-      { label: "Pin", value: "Lên đến 22 giờ phát video" },
-      { label: "Trọng lượng", value: "2.16 kg" },
-    ],
-    features: [
-      "Chip M3 Max với hiệu suất vượt trội",
-      "Màn hình Liquid Retina XDR 16.2 inch",
-      "Hệ thống âm thanh 6 loa với Spatial Audio",
-      "Camera FaceTime HD 1080p",
-      "Touch ID tích hợp",
-      "Bàn phím Magic Keyboard có đèn nền",
+      { label: "Loại", value: "Cơm trắng & Cơm gạo lứt" },
+      { label: "Bảo quản", value: "Ngăn mát tủ lạnh" },
+      { label: "Hạn sử dụng", value: "24 giờ từ ngày sản xuất" },
+      { label: "Ghi chú", value: "Đổi trả hoàn tiền khi có dấu hiệu hư hỏng của sản phẩm" },
     ],
     inStock: true,
-    warranty: "12 tháng chính hãng Apple",
-    shipping: "Miễn phí giao hàng toàn quốc",
-    returnPolicy: "Đổi trả trong 30 ngày",
+    warranty: "Không áp dụng",
+    shipping: "Giao ngay trong nội thành (áp dụng cho đơn hàng dưới 10 khay)",
+    returnPolicy: "Đổi trả hoàn tiền khi có dấu hiệu hư hỏng của sản phẩm",
   }
 
   const handleQuantityChange = (change: number) => {
     setQuantity(Math.max(1, quantity + change))
+  }
+
+  const getBadgeColor = (badge: string) => {
+    switch (badge) {
+      case "Đồ ăn thuần thực vật":
+        return "bg-green-500/10 text-green-500 border-green-500/20"
+      default:
+        return "bg-gray-500/10 text-gray-500 border-gray-500/20"
+    }
   }
 
   return (
@@ -71,10 +65,10 @@ export function ProductDetail({ productId }: ProductDetailProps) {
             alt={product.name}
             className="w-full h-full object-cover"
           />
-          {product.discount && (
+          {product.originalPrice && (
             <div className="absolute top-4 left-4">
               <Badge variant="destructive" className="bg-red-500 text-white">
-                -{product.discount}
+                Giảm giá
               </Badge>
             </div>
           )}
@@ -103,10 +97,9 @@ export function ProductDetail({ productId }: ProductDetailProps) {
         {/* Header */}
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
-            <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+            <Badge variant="secondary" className={getBadgeColor(product.badge)}>
               {product.badge}
             </Badge>
-            <span className="text-sm text-muted-foreground">{product.category}</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
           <div className="flex items-center space-x-4">
@@ -123,7 +116,6 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               </div>
               <span className="text-sm text-muted-foreground">({product.reviews} đánh giá)</span>
             </div>
-            <span className="text-sm text-muted-foreground">Thương hiệu: {product.brand}</span>
           </div>
         </div>
 
@@ -135,17 +127,6 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               <span className="text-xl text-muted-foreground line-through">{product.originalPrice}₫</span>
             )}
           </div>
-          {product.discount && (
-            <p className="text-sm text-green-600">
-              Tiết kiệm{" "}
-              {(
-                (Number.parseInt(product.originalPrice?.replace(/,/g, "") || "0") -
-                  Number.parseInt(product.price.replace(/,/g, ""))) /
-                1000000
-              ).toFixed(1)}
-              M VNĐ
-            </p>
-          )}
         </div>
 
         {/* Description */}
@@ -219,9 +200,8 @@ export function ProductDetail({ productId }: ProductDetailProps) {
 
         {/* Product Details Tabs */}
         <Tabs defaultValue="specs" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="specs">Thông số kỹ thuật</TabsTrigger>
-            <TabsTrigger value="features">Tính năng</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="specs">Thông số</TabsTrigger>
             <TabsTrigger value="reviews">Đánh giá</TabsTrigger>
           </TabsList>
           <TabsContent value="specs" className="space-y-4">
@@ -238,20 +218,6 @@ export function ProductDetail({ productId }: ProductDetailProps) {
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="features" className="space-y-4">
-            <Card>
-              <CardContent className="p-6">
-                <ul className="space-y-3">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-sm text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </CardContent>
             </Card>
           </TabsContent>

@@ -32,10 +32,10 @@ export default function ProductsPage() {
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Danh mục <span className="gradient-text">sản phẩm</span>
+            <span className="gradient-text">Danh mục sản phẩm</span>
           </h1>
           <p className="text-muted-foreground text-lg">
-            Khám phá bộ sưu tập sản phẩm công nghệ cao cấp với chất lượng đảm bảo và giá cả cạnh tranh
+            Khám phá các sản phẩm thuần thực vật, từ cơm khay ăn liền, thực phẩm đóng lon đến trà trái cây tươi mát.
           </p>
         </div>
 

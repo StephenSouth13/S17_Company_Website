@@ -75,7 +75,6 @@ export function ProductFilters() {
 
   return (
     <div className="space-y-6">
-      {/* Filter Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Filter className="h-5 w-5 text-primary" />
@@ -92,7 +91,6 @@ export function ProductFilters() {
         </Button>
       </div>
 
-      {/* Active Filters */}
       {(selectedCategories.length > 0 || selectedBrands.length > 0 || selectedRatings.length > 0) && (
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-muted-foreground">Bộ lọc đang áp dụng:</h3>
@@ -128,7 +126,6 @@ export function ProductFilters() {
         </div>
       )}
 
-      {/* Price Range */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Khoảng giá</CardTitle>
@@ -142,7 +139,6 @@ export function ProductFilters() {
         </CardContent>
       </Card>
 
-      {/* Categories */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Danh mục</CardTitle>
@@ -166,7 +162,6 @@ export function ProductFilters() {
         </CardContent>
       </Card>
 
-      {/* Brands */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Thương hiệu</CardTitle>
@@ -190,7 +185,6 @@ export function ProductFilters() {
         </CardContent>
       </Card>
 
-      {/* Ratings */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Đánh giá</CardTitle>
