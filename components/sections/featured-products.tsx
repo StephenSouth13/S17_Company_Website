@@ -1,11 +1,32 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, ShoppingCart, Eye, Heart } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "@/components/cart/cart-context" // Import hook useCart
+
+// Định nghĩa kiểu dữ liệu cho sản phẩm
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  originalPrice: string | null;
+  rating: number;
+  reviews: number;
+  image: string;
+  badge: string;
+  inStock: boolean; // Thêm inStock để kiểm tra trạng thái còn hàng
+  category: string; // Thêm category để tương thích
+  description: string; // Thêm description
+  specs: string[]; // Thêm specs
+}
 
 export function FeaturedProducts() {
-  const products = [
+  const { dispatch } = useCart(); // Lấy dispatch từ context giỏ hàng
+
+  const products: Product[] = [
     {
       id: 1,
       name: "Cơm khay",
@@ -15,7 +36,10 @@ export function FeaturedProducts() {
       reviews: 25,
       image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       badge: "Đồ ăn thuần thực vật",
-      discount: null,
+      inStock: true,
+      category: "Cơm",
+      description: "Cơm khay dùng ngay. Có 2 loại: cơm trắng & cơm gạo lứt",
+      specs: ["Gạo lứt", "Cơm", "Thuần chay"],
     },
     {
       id: 2,
@@ -26,7 +50,10 @@ export function FeaturedProducts() {
       reviews: 40,
       image: "https://images.unsplash.com/photo-1629853316148-5c4d0e6c6411?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       badge: "Sản phẩm lon",
-      discount: null,
+      inStock: true,
+      category: "Thực phẩm đóng gói",
+      description: "Các sản phẩm lon có thể dùng ngày. Thời hạn sử dụng: 12 tháng từ ngày sản xuất",
+      specs: ["Sản phẩm lon", "Đồ ăn vặt", "Thuần chay"],
     },
     {
       id: 3,
@@ -37,10 +64,13 @@ export function FeaturedProducts() {
       reviews: 12,
       image: "https://images.unsplash.com/photo-1596803244243-774b76a086de?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       badge: "Trà trái cây",
-      discount: null,
+      inStock: true,
+      category: "Thức uống",
+      description: "Trà trái cây làm từ trái cây ngâm tự nhiên, không sử dụng syrup",
+      specs: ["Thức uống", "Trà", "Giải khát"],
     },
   ];
-  
+
   const getBadgeColor = (badge: string) => {
     switch (badge) {
       case "Đồ ăn thuần thực vật":
@@ -53,6 +83,10 @@ export function FeaturedProducts() {
         return "bg-gray-500/10 text-gray-500 border-gray-500/20"
     }
   }
+
+  const handleAddToCart = (product: Product) => {
+    dispatch({ type: "ADD_ITEM", payload: product });
+  };
 
   return (
     <section className="py-24">
@@ -123,7 +157,11 @@ export function FeaturedProducts() {
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0">
-                  <Button className="w-full" size="sm">
+                  <Button 
+                    className="w-full" 
+                    size="sm"
+                    onClick={() => handleAddToCart(product)} // Thêm onClick
+                  >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Thêm vào giỏ
                   </Button>
@@ -134,18 +172,17 @@ export function FeaturedProducts() {
 
           {/* View All Button */}
           <div className="text-center">
-        {/* Thay Button bằng thẻ a và thêm href */}
-        <Button
-          asChild // asChild giúp Button render ra thẻ a
-          size="lg"
-          variant="outline"
-          className="border-primary/20 hover:bg-primary/10 bg-transparent"
-        >
-          <a href="/products">
-            Xem tất cả sản phẩm
-          </a>
-        </Button>
-      </div>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-primary/20 hover:bg-primary/10 bg-transparent"
+            >
+              <a href="/products">
+                Xem tất cả sản phẩm
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

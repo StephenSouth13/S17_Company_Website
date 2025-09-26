@@ -1,14 +1,13 @@
 "use client"
 
 import type React from "react"
-
 import { createContext, useContext, useReducer, type ReactNode } from "react"
 
 interface CartItem {
   id: number
   name: string
   price: string
-  originalPrice?: string
+  originalPrice?: string | null // Đã sửa kiểu dữ liệu để chấp nhận null
   image: string
   quantity: number
   variant?: string
@@ -50,7 +49,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           items: updatedItems,
           itemCount: updatedItems.reduce((sum, item) => sum + item.quantity, 0),
           total: updatedItems.reduce(
-            (sum, item) => sum + Number.parseInt(item.price.replace(/,/g, "")) * item.quantity,
+            (sum, item) => sum + Number.parseInt(item.price.split('-')[0].replace(/,/g, "")) * item.quantity,
             0,
           ),
         }
@@ -61,7 +60,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         ...state,
         items: newItems,
         itemCount: newItems.reduce((sum, item) => sum + item.quantity, 0),
-        total: newItems.reduce((sum, item) => sum + Number.parseInt(item.price.replace(/,/g, "")) * item.quantity, 0),
+        total: newItems.reduce((sum, item) => sum + Number.parseInt(item.price.split('-')[0].replace(/,/g, "")) * item.quantity, 0),
       }
     }
 
@@ -71,7 +70,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         ...state,
         items: newItems,
         itemCount: newItems.reduce((sum, item) => sum + item.quantity, 0),
-        total: newItems.reduce((sum, item) => sum + Number.parseInt(item.price.replace(/,/g, "")) * item.quantity, 0),
+        total: newItems.reduce((sum, item) => sum + Number.parseInt(item.price.split('-')[0].replace(/,/g, "")) * item.quantity, 0),
       }
     }
 
@@ -88,7 +87,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         items: updatedItems,
         itemCount: updatedItems.reduce((sum, item) => sum + item.quantity, 0),
         total: updatedItems.reduce(
-          (sum, item) => sum + Number.parseInt(item.price.replace(/,/g, "")) * item.quantity,
+          (sum, item) => sum + Number.parseInt(item.price.split('-')[0].replace(/,/g, "")) * item.quantity,
           0,
         ),
       }
@@ -126,37 +125,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 }
 
 const initialState: CartState = {
-  items: [
-    // Mock initial items for demo
-    {
-      id: 1,
-      name: "MacBook Pro 16-inch M3 Max",
-      price: "89,990,000",
-      originalPrice: "94,990,000",
-      image: "/macbook-pro-16-m3-max.jpg",
-      quantity: 1,
-      inStock: true,
-    },
-    {
-      id: 2,
-      name: "iPhone 15 Pro Max 256GB",
-      price: "34,990,000",
-      image: "/iphone-15-pro-max-titanium.png",
-      quantity: 2,
-      inStock: true,
-    },
-  ],
+  items: [],
   isOpen: false,
   total: 0,
   itemCount: 0,
 }
-
-// Calculate initial totals
-initialState.itemCount = initialState.items.reduce((sum, item) => sum + item.quantity, 0)
-initialState.total = initialState.items.reduce(
-  (sum, item) => sum + Number.parseInt(item.price.replace(/,/g, "")) * item.quantity,
-  0,
-)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)

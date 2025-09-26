@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input"
 import { Star, ShoppingCart, Eye, Heart, Grid3X3, List, Search } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "@/components/cart/cart-context"
 
 // Định nghĩa kiểu dữ liệu cho sản phẩm
 interface Product {
@@ -25,58 +26,18 @@ interface Product {
   inStock: boolean;
 }
 
-// Dữ liệu mock (giả) dựa trên yêu cầu của bạn, chỉ gồm các sản phẩm đã được liệt kê
-const MOCK_PRODUCTS: Product[] = [
-  {
-    id: 1,
-    name: "Cơm khay",
-    price: "42.000 - 49.000",
-    originalPrice: null,
-    rating: 4.8,
-    reviews: 25,
-    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    badge: "Đồ ăn thuần thực vật",
-    category: "Cơm khay",
-    description: "Cơm khay dùng ngay. Có 2 loại: cơm trắng & cơm gạo lứt. Đổi trả hoàn tiền khi có dấu hiệu hư hỏng của sản phẩm. Đặt hàng giao ngay. Số lượng lớn hơn 10 khay, cần đặt trước để kiểm tra hàng tồn.",
-    specs: ["Cơm trắng", "Cơm gạo lứt", "Đổi trả hoàn tiền", "Đặt trước"],
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: "Thực phẩm thuần thực vật",
-    price: "18.000 - 55.000",
-    originalPrice: null,
-    rating: 4.5,
-    reviews: 40,
-    image: "https://images.unsplash.com/photo-1629853316148-5c4d0e6c6411?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    badge: "Sản phẩm lon",
-    category: "Thực phẩm thuần thực vật",
-    description: "Các sản phẩm lon có thể dùng ngay. Thời hạn sử dụng: 12 tháng từ ngày sản xuất. Đặt hàng giao ngay. Số lượng lớn hơn 10 lon, cần đặt trước để kiểm tra hàng tồn.",
-    specs: ["Sản phẩm lon", "Dùng ngay", "Hạn sử dụng 12 tháng", "Đặt trước"],
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: "Trà trái cây",
-    price: "25.000 - 45.000",
-    originalPrice: null,
-    rating: 4.9,
-    reviews: 12,
-    image: "https://images.unsplash.com/photo-1596803244243-774b76a086de?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    badge: "Trà trái cây",
-    category: "Trà trái cây",
-    description: "Trà trái cây làm từ trái cây ngâm tự nhiên, không sử dụng syrup. Đặt hàng giao ngay. Số lượng lớn hơn 10 ly đặt sớm để giao kịp thời.",
-    specs: ["Trái cây tự nhiên", "Không syrup", "Đặt trước", "Giao hàng ngay"],
-    inStock: true,
-  },
-];
+// Khôi phục mảng mockup, nhưng để trống
+const MOCK_PRODUCTS: Product[] = []; 
 
 export function ProductCatalog() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [sortBy, setSortBy] = useState("popular")
   const [searchQuery, setSearchQuery] = useState("")
-
+  
+  // Khởi tạo trạng thái sản phẩm với mảng mockup trống
   const [products, setProducts] = useState<Product[]>(MOCK_PRODUCTS);
+
+  const { dispatch } = useCart();
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -109,6 +70,10 @@ export function ProductCatalog() {
         return "bg-gray-500/10 text-gray-500 border-gray-500/20"
     }
   }
+  
+  const handleAddToCart = (product: Product) => {
+    dispatch({ type: "ADD_ITEM", payload: product });
+  };
 
   return (
     <div className="space-y-6">
@@ -232,7 +197,12 @@ export function ProductCatalog() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button className="w-full" size="sm" disabled={!product.inStock}>
+                    <Button 
+                      className="w-full" 
+                      size="sm" 
+                      disabled={!product.inStock}
+                      onClick={() => handleAddToCart(product)}
+                    >
                       <ShoppingCart className="h-4 w-4 mr-2" />
                       {product.inStock ? "Thêm vào giỏ" : "Hết hàng"}
                     </Button>
@@ -293,7 +263,11 @@ export function ProductCatalog() {
                           </div>
                         </div>
                         <div className="flex items-center space-x-4">
-                          <Button className="px-6" disabled={!product.inStock}>
+                          <Button 
+                            className="px-6" 
+                            disabled={!product.inStock}
+                            onClick={() => handleAddToCart(product)}
+                          >
                             <ShoppingCart className="h-4 w-4 mr-2" />
                             {product.inStock ? "Thêm vào giỏ" : "Hết hàng"}
                           </Button>

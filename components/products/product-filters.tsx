@@ -1,77 +1,55 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Slider } from "@/components/ui/slider"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { X, Filter } from "lucide-react"
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { X, Filter } from "lucide-react";
 
 export function ProductFilters() {
-  const [priceRange, setPriceRange] = useState([0, 100000000])
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([])
-  const [selectedRatings, setSelectedRatings] = useState<string[]>([])
+  const [priceRange, setPriceRange] = useState([18000, 55000]);
+  const [selectedProductTypes, setSelectedProductTypes] = useState<string[]>([]);
+  const [selectedBadges, setSelectedBadges] = useState<string[]>([]);
 
-  const categories = [
-    { id: "laptops", name: "Laptop", count: 45 },
-    { id: "smartphones", name: "Điện thoại", count: 67 },
-    { id: "tablets", name: "Máy tính bảng", count: 23 },
-    { id: "accessories", name: "Phụ kiện", count: 89 },
-    { id: "gaming", name: "Gaming", count: 34 },
-    { id: "audio", name: "Âm thanh", count: 56 },
-  ]
+  const productTypes = [
+    { id: "com-khay", name: "Cơm khay", count: 1 },
+    { id: "thuc-pham-thuan-thuc-vat", name: "Thực phẩm thuần thực vật", count: 1 },
+    { id: "tra-trai-cay", name: "Trà trái cây", count: 1 },
+  ];
 
-  const brands = [
-    { id: "apple", name: "Apple", count: 28 },
-    { id: "samsung", name: "Samsung", count: 35 },
-    { id: "asus", name: "ASUS", count: 42 },
-    { id: "dell", name: "Dell", count: 31 },
-    { id: "hp", name: "HP", count: 29 },
-    { id: "lenovo", name: "Lenovo", count: 38 },
-  ]
+  const badges = [
+    { id: "do-an-thuan-thuc-vat", name: "Đồ ăn thuần thực vật", count: 1 },
+    { id: "san-pham-lon", name: "Sản phẩm lon", count: 1 },
+    { id: "tra-trai-cay-badge", name: "Trà trái cây", count: 1 },
+  ];
 
-  const ratings = [
-    { id: "5", name: "5 sao", count: 45 },
-    { id: "4", name: "4 sao trở lên", count: 123 },
-    { id: "3", name: "3 sao trở lên", count: 189 },
-  ]
-
-  const handleCategoryChange = (categoryId: string, checked: boolean) => {
+  const handleProductTypeChange = (typeId: string, checked: boolean) => {
     if (checked) {
-      setSelectedCategories([...selectedCategories, categoryId])
+      setSelectedProductTypes([...selectedProductTypes, typeId]);
     } else {
-      setSelectedCategories(selectedCategories.filter((id) => id !== categoryId))
+      setSelectedProductTypes(selectedProductTypes.filter((id) => id !== typeId));
     }
-  }
+  };
 
-  const handleBrandChange = (brandId: string, checked: boolean) => {
+  const handleBadgeChange = (badgeId: string, checked: boolean) => {
     if (checked) {
-      setSelectedBrands([...selectedBrands, brandId])
+      setSelectedBadges([...selectedBadges, badgeId]);
     } else {
-      setSelectedBrands(selectedBrands.filter((id) => id !== brandId))
+      setSelectedBadges(selectedBadges.filter((id) => id !== badgeId));
     }
-  }
-
-  const handleRatingChange = (ratingId: string, checked: boolean) => {
-    if (checked) {
-      setSelectedRatings([...selectedRatings, ratingId])
-    } else {
-      setSelectedRatings(selectedRatings.filter((id) => id !== ratingId))
-    }
-  }
+  };
 
   const clearAllFilters = () => {
-    setSelectedCategories([])
-    setSelectedBrands([])
-    setSelectedRatings([])
-    setPriceRange([0, 100000000])
-  }
+    setSelectedProductTypes([]);
+    setSelectedBadges([]);
+    setPriceRange([18000, 55000]);
+  };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("vi-VN").format(price)
-  }
+    return new Intl.NumberFormat("vi-VN").format(price) + "₫";
+  };
 
   return (
     <div className="space-y-6">
@@ -90,123 +68,98 @@ export function ProductFilters() {
           Xóa tất cả
         </Button>
       </div>
-
-      {(selectedCategories.length > 0 || selectedBrands.length > 0 || selectedRatings.length > 0) && (
+      ---
+      {(selectedProductTypes.length > 0 || selectedBadges.length > 0) && (
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-muted-foreground">Bộ lọc đang áp dụng:</h3>
           <div className="flex flex-wrap gap-2">
-            {selectedCategories.map((categoryId) => {
-              const category = categories.find((c) => c.id === categoryId)
+            {selectedProductTypes.map((typeId) => {
+              const productType = productTypes.find((t) => t.id === typeId);
               return (
-                <Badge key={categoryId} variant="secondary" className="bg-primary/10 text-primary">
-                  {category?.name}
-                  <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => handleCategoryChange(categoryId, false)} />
+                <Badge key={typeId} variant="secondary" className="bg-primary/10 text-primary">
+                  {productType?.name}
+                  <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => handleProductTypeChange(typeId, false)} />
                 </Badge>
-              )
+              );
             })}
-            {selectedBrands.map((brandId) => {
-              const brand = brands.find((b) => b.id === brandId)
+            {selectedBadges.map((badgeId) => {
+              const badge = badges.find((b) => b.id === badgeId);
               return (
-                <Badge key={brandId} variant="secondary" className="bg-accent/10 text-accent">
-                  {brand?.name}
-                  <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => handleBrandChange(brandId, false)} />
+                <Badge key={badgeId} variant="secondary" className="bg-green-500/10 text-green-500">
+                  {badge?.name}
+                  <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => handleBadgeChange(badgeId, false)} />
                 </Badge>
-              )
-            })}
-            {selectedRatings.map((ratingId) => {
-              const rating = ratings.find((r) => r.id === ratingId)
-              return (
-                <Badge key={ratingId} variant="secondary" className="bg-yellow-500/10 text-yellow-600">
-                  {rating?.name}
-                  <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => handleRatingChange(ratingId, false)} />
-                </Badge>
-              )
+              );
             })}
           </div>
         </div>
       )}
-
+      ---
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Khoảng giá</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Slider value={priceRange} onValueChange={setPriceRange} max={100000000} step={1000000} className="w-full" />
+          <Slider
+            value={priceRange}
+            onValueChange={setPriceRange}
+            max={55000}
+            min={18000}
+            step={1000}
+            className="w-full"
+          />
           <div className="flex justify-between text-sm text-muted-foreground">
-            <span>{formatPrice(priceRange[0])}₫</span>
-            <span>{formatPrice(priceRange[1])}₫</span>
+            <span>{formatPrice(priceRange[0])}</span>
+            <span>{formatPrice(priceRange[1])}</span>
           </div>
         </CardContent>
       </Card>
-
+      ---
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Danh mục</CardTitle>
+          <CardTitle className="text-base">Loại sản phẩm</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {categories.map((category) => (
-            <div key={category.id} className="flex items-center justify-between">
+          {productTypes.map((productType) => (
+            <div key={productType.id} className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox
-                  id={category.id}
-                  checked={selectedCategories.includes(category.id)}
-                  onCheckedChange={(checked) => handleCategoryChange(category.id, checked as boolean)}
+                  id={productType.id}
+                  checked={selectedProductTypes.includes(productType.id)}
+                  onCheckedChange={(checked) => handleProductTypeChange(productType.id, checked as boolean)}
                 />
-                <label htmlFor={category.id} className="text-sm font-medium cursor-pointer">
-                  {category.name}
+                <label htmlFor={productType.id} className="text-sm font-medium cursor-pointer">
+                  {productType.name}
                 </label>
               </div>
-              <span className="text-xs text-muted-foreground">({category.count})</span>
+              <span className="text-xs text-muted-foreground">({productType.count})</span>
             </div>
           ))}
         </CardContent>
       </Card>
-
+      ---
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Thương hiệu</CardTitle>
+          <CardTitle className="text-base">Nhãn sản phẩm</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {brands.map((brand) => (
-            <div key={brand.id} className="flex items-center justify-between">
+          {badges.map((badge) => (
+            <div key={badge.id} className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox
-                  id={brand.id}
-                  checked={selectedBrands.includes(brand.id)}
-                  onCheckedChange={(checked) => handleBrandChange(brand.id, checked as boolean)}
+                  id={badge.id}
+                  checked={selectedBadges.includes(badge.id)}
+                  onCheckedChange={(checked) => handleBadgeChange(badge.id, checked as boolean)}
                 />
-                <label htmlFor={brand.id} className="text-sm font-medium cursor-pointer">
-                  {brand.name}
+                <label htmlFor={badge.id} className="text-sm font-medium cursor-pointer">
+                  {badge.name}
                 </label>
               </div>
-              <span className="text-xs text-muted-foreground">({brand.count})</span>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Đánh giá</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          {ratings.map((rating) => (
-            <div key={rating.id} className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id={rating.id}
-                  checked={selectedRatings.includes(rating.id)}
-                  onCheckedChange={(checked) => handleRatingChange(rating.id, checked as boolean)}
-                />
-                <label htmlFor={rating.id} className="text-sm font-medium cursor-pointer">
-                  {rating.name}
-                </label>
-              </div>
-              <span className="text-xs text-muted-foreground">({rating.count})</span>
+              <span className="text-xs text-muted-foreground">({badge.count})</span>
             </div>
           ))}
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
