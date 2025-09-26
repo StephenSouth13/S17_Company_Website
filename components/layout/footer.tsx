@@ -60,8 +60,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  {t.nav.projects}
+                <Link href="/services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t.nav.services}
                 </Link>
               </li>
               <li>

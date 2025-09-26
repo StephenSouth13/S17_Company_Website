@@ -23,8 +23,8 @@ export function HeroSection() {
       title: language === "vi" ? "Đầu tư thông minh, sinh lời bền vững" : "Smart Investment, Sustainable Profits",
       subtitle:
         language === "vi"
-          ? "Tham gia các dự án đầu tư được chọn lọc kỹ càng với tỷ suất sinh lời hấp dẫn"
-          : "Join carefully selected investment projects with attractive returns",
+          ? "Tham gia các Dịch Vụ đầu tư được chọn lọc kỹ càng với tỷ suất sinh lời hấp dẫn"
+          : "Join carefully selected investment services with attractive returns",
       image: "/financial-charts-and-graphs-on-dark-background.jpg",
     },
     {

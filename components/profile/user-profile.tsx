@@ -91,7 +91,7 @@ export function UserProfile() {
   const investments = [
     {
       id: "INV-001",
-      name: "Dự án Bất động sản Eco Green",
+      name: "Dịch Vụ Bất động sản Eco Green",
       amount: "50,000,000",
       roi: "+18%",
       status: "Đang hoạt động",

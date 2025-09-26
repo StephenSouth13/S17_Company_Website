@@ -5,7 +5,7 @@ export interface Translations {
   nav: {
     home: string;
     products: string;
-    projects: string;
+    services: string;
     about: string;
     contact: string;
     login: string;
@@ -32,7 +32,7 @@ export interface Translations {
       subtitle: string;
       viewAll: string;
     };
-    projects: {
+    services: {
       title: string;
       subtitle: string;
       viewAll: string;
@@ -74,8 +74,8 @@ export interface Translations {
     outOfStock: string;
   };
 
-  // Projects
-  projects: {
+  // services
+  services: {
     title: string;
     subtitle: string;
     searchPlaceholder: string;
@@ -110,7 +110,7 @@ export interface Translations {
       progress: string;
       viewDetails: string;
       investNow: string;
-      backToProjects: string;
+      backToservices: string;
       keyFeatures: string;
       financialProjections: string;
       projectTeam: string;
@@ -267,7 +267,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "Home",
       products: "Products",
-      projects: "Projects",
+      services: "services",
       about: "About",
       contact: "Contact",
       login: "Login",
@@ -286,17 +286,17 @@ export const translations: Record<Language, Translations> = {
       about: {
         title: "About S17 Trading",
         description:
-          "We are a leading company specializing in premium products and innovative investment projects, committed to delivering excellence and creating value for our partners and investors.",
+          "We are a leading company specializing in premium products and innovative investment services, committed to delivering excellence and creating value for our partners and investors.",
       },
       featuredProducts: {
         title: "Featured Products",
         subtitle: "Discover our carefully curated selection of premium products",
         viewAll: "View All Products",
       },
-      projects: {
-        title: "Investment Projects",
+      services: {
+        title: "Investment services",
         subtitle: "Explore our diverse portfolio of successful investment opportunities",
-        viewAll: "View All Projects",
+        viewAll: "View All services",
       },
       partners: {
         title: "Our Trusted Partners",
@@ -305,7 +305,7 @@ export const translations: Record<Language, Translations> = {
         title: "Ready to Get Started?",
         subtitle: "Join thousands of satisfied customers and investors",
         newsletter: "Subscribe to Newsletter",
-        explore: "Explore Projects",
+        explore: "Explore services",
       },
     },
     products: {
@@ -332,17 +332,17 @@ export const translations: Record<Language, Translations> = {
       inStock: "In Stock",
       outOfStock: "Out of Stock",
     },
-    projects: {
-      title: "Investment Projects",
+    services: {
+      title: "Investment services",
       subtitle:
-        "Explore our diverse portfolio of successful investment projects and discover opportunities that align with your financial goals and risk tolerance.",
-      searchPlaceholder: "Search projects...",
+        "Explore our diverse portfolio of successful investment services and discover opportunities that align with your financial goals and risk tolerance.",
+      searchPlaceholder: "Search services...",
       filters: {
         category: "Category",
         status: "Status",
       },
       categories: {
-        all: "All Projects",
+        all: "All services",
         realEstate: "Real Estate",
         technology: "Technology",
         manufacturing: "Manufacturing",
@@ -368,7 +368,7 @@ export const translations: Record<Language, Translations> = {
         progress: "Progress",
         viewDetails: "View Details",
         investNow: "Invest Now",
-        backToProjects: "Back to Projects",
+        backToservices: "Back to services",
         keyFeatures: "Key Features",
         financialProjections: "Financial Projections",
         projectTeam: "Project Team",
@@ -515,7 +515,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "Trang Chủ",
       products: "Sản Phẩm",
-      projects: "Dự Án",
+      services: "Dịch Vụ",
       about: "Giới Thiệu",
       contact: "Liên Hệ",
       login: "Đăng Nhập",
@@ -534,17 +534,17 @@ export const translations: Record<Language, Translations> = {
       about: {
         title: "Về S17 Trading",
         description:
-          "Chúng tôi là công ty hàng đầu chuyên về các sản phẩm cao cấp và các dự án đầu tư sáng tạo, cam kết mang lại sự xuất sắc và tạo ra giá trị cho các đối tác và nhà đầu tư.",
+          "Chúng tôi là công ty hàng đầu chuyên về các sản phẩm cao cấp và các Dịch Vụ đầu tư sáng tạo, cam kết mang lại sự xuất sắc và tạo ra giá trị cho các đối tác và nhà đầu tư.",
       },
       featuredProducts: {
         title: "Sản Phẩm Nổi Bật",
         subtitle: "Khám phá bộ sưu tập sản phẩm cao cấp được tuyển chọn kỹ lưỡng",
         viewAll: "Xem Tất Cả Sản Phẩm",
       },
-      projects: {
-        title: "Dự Án Đầu Tư",
+      services: {
+        title: "Dịch Vụ Đầu Tư",
         subtitle: "Khám phá danh mục đa dạng các cơ hội đầu tư thành công của chúng tôi",
-        viewAll: "Xem Tất Cả Dự Án",
+        viewAll: "Xem Tất Cả Dịch Vụ",
       },
       partners: {
         title: "Đối Tác Tin Cậy",
@@ -553,7 +553,7 @@ export const translations: Record<Language, Translations> = {
         title: "Sẵn Sàng Bắt Đầu?",
         subtitle: "Tham gia cùng hàng nghìn khách hàng và nhà đầu tư hài lòng",
         newsletter: "Đăng Ký Nhận Tin",
-        explore: "Khám Phá Dự Án",
+        explore: "Khám Phá Dịch Vụ",
       },
     },
     products: {
@@ -580,17 +580,17 @@ export const translations: Record<Language, Translations> = {
       inStock: "Còn Hàng",
       outOfStock: "Hết Hàng",
     },
-    projects: {
-      title: "Dự Án Đầu Tư",
+    services: {
+      title: "Dịch Vụ Đầu Tư",
       subtitle:
-        "Khám phá danh mục đa dạng các dự án đầu tư thành công và tìm hiểu các cơ hội phù hợp với mục tiêu tài chính và mức độ rủi ro của bạn.",
-      searchPlaceholder: "Tìm kiếm dự án...",
+        "Khám phá danh mục đa dạng các Dịch Vụ đầu tư thành công và tìm hiểu các cơ hội phù hợp với mục tiêu tài chính và mức độ rủi ro của bạn.",
+      searchPlaceholder: "Tìm kiếm Dịch Vụ...",
       filters: {
         category: "Danh Mục",
         status: "Trạng Thái",
       },
       categories: {
-        all: "Tất Cả Dự Án",
+        all: "Tất Cả Dịch Vụ",
         realEstate: "Bất Động Sản",
         technology: "Công Nghệ",
         manufacturing: "Sản Xuất",
@@ -616,15 +616,15 @@ export const translations: Record<Language, Translations> = {
         progress: "Tiến Độ",
         viewDetails: "Xem Chi Tiết",
         investNow: "Đầu Tư Ngay",
-        backToProjects: "Quay Lại Dự Án",
+        backToservices: "Quay Lại Dịch Vụ",
         keyFeatures: "Tính Năng Chính",
         financialProjections: "Dự Báo Tài Chính",
-        projectTeam: "Đội Ngũ Dự Án",
+        projectTeam: "Đội Ngũ Dịch Vụ",
         riskFactors: "Yếu Tố Rủi Ro",
-        projectDetails: "Chi Tiết Dự Án",
+        projectDetails: "Chi Tiết Dịch Vụ",
         startDate: "Ngày Bắt Đầu",
         endDate: "Ngày Kết Thúc",
-        projectManager: "Quản Lý Dự Án",
+        projectManager: "Quản Lý Dịch Vụ",
         totalInvestors: "Tổng Số Nhà Đầu Tư",
         fundingProgress: "Tiến Độ Gây Quỹ",
         raised: "Đã Huy Động",

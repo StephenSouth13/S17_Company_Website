@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PenTool, Globe, Briefcase, Video, Book, Mic } from "lucide-react";
+import Link from "next/link"; // Thêm import Link
 
 export function OurServices() {
   const services = [
@@ -17,7 +18,6 @@ export function OurServices() {
       image: "/media-channels.jpg",
       price: "4.500.000 - 15.000.000",
       status: "Theo hợp đồng",
-      process: "1. Nhận yêu cầu từ khách hàng\n2. Tư vấn dịch vụ phù hợp\n3. Gửi proposal + báo giá dịch vụ\n4. Trình bày phương án (online hoặc offline)\n5. Thống nhất nội dung, hợp đồng\n6. Thanh toán chi phí theo hợp đồng\n7. Triển khai dịch vụ\n8. Báo cáo tuần / tháng\n9. Nghiệm thu hoặc gia hạn hợp đồng",
     },
     {
       id: 2,
@@ -27,7 +27,6 @@ export function OurServices() {
       image: "/website-design.jpg",
       price: "3.000.000 - 30.000.000",
       status: "Theo hợp đồng",
-      process: null,
     },
     {
       id: 3,
@@ -37,10 +36,7 @@ export function OurServices() {
       image: "/logo-design.jpg",
       price: "5.000.000 - 30.000.000",
       status: "Theo hợp đồng",
-      process: null,
     },
-    
-    
   ];
 
   const getStatusColor = (status: string) => {
@@ -60,16 +56,6 @@ export function OurServices() {
         return <Globe className="h-4 w-4 text-primary" />;
       case "Thiết kế logo":
         return <PenTool className="h-4 w-4 text-primary" />;
-      case "Thiết kế ấn phẩm Social + Ecommerce":
-        return <PenTool className="h-4 w-4 text-primary" />;
-      case "Sản xuất Video":
-        return <Video className="h-4 w-4 text-primary" />;
-      case "Đào tạo theo chuyên đề":
-        return <Book className="h-4 w-4 text-primary" />;
-      case "Tổ chức workshop":
-      case "Tổ chức Diễn đàn":
-      case "Tổ chức sự kiện":
-        return <Mic className="h-4 w-4 text-primary" />;
       default:
         return <Briefcase className="h-4 w-4 text-primary" />;
     }
@@ -94,7 +80,7 @@ export function OurServices() {
             {services.map((service) => (
               <Card
                 key={service.id}
-                className="group hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card border-border/50 overflow-hidden"
+                className="group hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card border-border/50 overflow-hidden flex flex-col h-full"
               >
                 <div className="relative">
                   <img
@@ -109,7 +95,7 @@ export function OurServices() {
                   </div>
                 </div>
 
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 flex-grow"> {/* Thêm flex-grow */}
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {service.title}
                   </h3>
@@ -117,13 +103,6 @@ export function OurServices() {
                 </CardHeader>
 
                 <CardContent className="space-y-4">
-                  {service.process && (
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-sm">Quy trình thực hiện:</h4>
-                      <p className="text-xs text-muted-foreground whitespace-pre-line">{service.process}</p>
-                    </div>
-                  )}
-
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-center space-x-2">
                       {getIcon(service.title)}
@@ -136,27 +115,24 @@ export function OurServices() {
                 </CardContent>
 
                 <CardFooter className="pt-0">
-                  <Button className="w-full" size="sm">
-                    Tìm hiểu thêm
-                  </Button>
+                  <Link href={`/services/${service.id}`} className="w-full">
+                    <Button className="w-full" size="sm">
+                      Tìm hiểu thêm
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}
           </div>
 
           {/* View All Button */}
-<div className="text-center">
-  <Button
-    size="lg"
-    variant="outline"
-    className="border-primary/20 hover:bg-primary/10 bg-transparent"
-    asChild // Thêm prop này vào đây
-  >
-    <Link href="/projects">
-      Xem tất cả dịch vụ
-    </Link>
-  </Button>
-</div>
+          <div className="text-center">
+            <Button size="lg" asChild>
+              <Link href="/services">
+                Xem tất cả dịch vụ
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

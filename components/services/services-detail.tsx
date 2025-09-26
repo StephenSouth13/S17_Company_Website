@@ -1,127 +1,132 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowLeft, Calendar, MapPin, Users, Target, FileText, BarChart3, Shield, Clock, Building } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  ArrowLeft,
+  DollarSign,
+  Briefcase,
+  PenTool,
+  Clock,
+  User,
+  List,
+  CheckCircle,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-interface ProjectDetailProps {
-  projectId: string
+interface ServiceDetailProps {
+  serviceId: string;
 }
 
-// Mock project data - in real app, this would come from API
-const getProjectById = (id: string) => {
-  const projects = {
+// Mock service data
+const getServiceById = (id: string) => {
+  const services = {
     "1": {
       id: 1,
-      title: "Smart City Development",
-      category: "Real Estate",
-      status: "Active",
-      investment: "$50M",
-      returns: "+24.5%",
-      duration: "36 months",
-      location: "Ho Chi Minh City",
-      investors: 156,
-      description:
-        "Revolutionary smart city project integrating IoT, AI, and sustainable technologies to create the future of urban living.",
-      longDescription:
-        "This groundbreaking smart city development project represents the future of urban living in Vietnam. By integrating cutting-edge IoT sensors, artificial intelligence systems, and sustainable technologies, we are creating a model for modern cities across Southeast Asia. The project encompasses residential, commercial, and public spaces designed with environmental sustainability and technological innovation at their core.",
-      images: ["/smart-city-development.jpg", "/smart-city-development-2.jpg", "/smart-city-development-3.jpg"],
-      progress: 65,
-      riskLevel: "Medium",
-      minInvestment: "$10,000",
-      expectedROI: "24-28%",
-      projectManager: "Nguyen Van Duc",
-      startDate: "2023-01-15",
-      endDate: "2026-01-15",
-      totalRaised: "$32.5M",
-      targetAmount: "$50M",
-      keyFeatures: [
-        "Smart traffic management systems",
-        "IoT-enabled infrastructure",
-        "Renewable energy integration",
-        "AI-powered city services",
-        "Sustainable building materials",
-        "Digital twin technology",
+      title: "Chăm sóc các kênh truyền thông",
+      type: "Dịch vụ",
+      description: "Gói chăm sóc các kênh truyền thông: Facebook, Website, Các kênh Social, Các kênh E-com. Bao gồm nội dung + hình ảnh + Video.",
+      longDescription: "Dịch vụ này giúp doanh nghiệp tối ưu hóa và quản lý hiệu quả các kênh truyền thông trực tuyến. Chúng tôi tạo nội dung hấp dẫn, sản xuất hình ảnh và video chất lượng cao, đồng thời theo dõi và báo cáo hiệu suất định kỳ để đảm bảo thương hiệu của bạn luôn nổi bật và thu hút khách hàng tiềm năng.",
+      image: "/media-channels.jpg",
+      price: "4.500.000 - 15.000.000",
+      status: "Theo hợp đồng",
+      contractDuration: "Tối thiểu 6 tháng",
+      process: [
+        "1. Nhận yêu cầu từ khách hàng",
+        "2. Tư vấn dịch vụ phù hợp",
+        "3. Gửi proposal + báo giá dịch vụ",
+        "4. Trình bày phương án (online hoặc offline)",
+        "5. Thống nhất nội dung, hợp đồng",
+        "6. Thanh toán chi phí theo hợp đồng",
+        "7. Triển khai dịch vụ",
+        "8. Báo cáo tuần / tháng",
+        "9. Nghiệm thu hoặc gia hạn hợp đồng",
       ],
-      financialProjections: [
-        { year: 2024, revenue: "$5M", profit: "$1.2M" },
-        { year: 2025, revenue: "$12M", profit: "$3.6M" },
-        { year: 2026, revenue: "$18M", profit: "$6.2M" },
+      packages: [
+        { name: "Gói Cơ Bản", price: "4.500.000", details: "Chăm sóc 1 kênh, 12 bài viết/tháng, không bao gồm video." },
+        { name: "Gói Chuyên Nghiệp", price: "8.000.000", details: "Chăm sóc 2 kênh, 20 bài viết/tháng, 4 video ngắn/tháng." },
+        { name: "Gói Toàn Diện", price: "15.000.000", details: "Chăm sóc đa kênh, tối ưu nội dung, sản xuất video chuyên nghiệp." },
       ],
-      riskFactors: [
-        "Regulatory changes in smart city policies",
-        "Technology adoption rates",
-        "Construction delays due to weather",
-        "Market competition from other developments",
+      benefits: [
+        "Tiết kiệm chi phí và thời gian quản lý",
+        "Nâng cao độ nhận diện thương hiệu",
+        "Tăng tương tác và thu hút khách hàng",
+        "Đảm bảo sự nhất quán trên các nền tảng",
       ],
-      team: [
-        { name: "Nguyen Van Duc", role: "Project Manager", experience: "15 years" },
-        { name: "Tran Thi Mai", role: "Technical Lead", experience: "12 years" },
-        { name: "Le Hoang Nam", role: "Financial Analyst", experience: "10 years" },
-      ],
+      images: ["/media-channels.jpg", "/media-channels-2.jpg", "/media-channels-3.jpg"],
     },
-  }
+    "2": {
+      id: 2,
+      title: "Thiết kế và xây dựng website",
+      type: "Dịch vụ",
+      description: "Thiết kế website từ căn bản đến nâng cao, bao gồm các dịch vụ trọn gói hoặc theo nhu cầu khách hàng.",
+      longDescription: "Dịch vụ này cung cấp giải pháp thiết kế website chuyên nghiệp, từ website giới thiệu doanh nghiệp đơn giản đến các trang thương mại điện tử phức tạp. Chúng tôi tập trung vào trải nghiệm người dùng (UX/UI) mượt mà, tốc độ tải trang nhanh và tối ưu hóa SEO để website của bạn không chỉ đẹp mà còn hiệu quả trong việc kinh doanh.",
+      image: "/website-design.jpg",
+      price: "3.000.000 - 30.000.000",
+      status: "Theo hợp đồng",
+      contractDuration: "1-3 tháng (tùy dự án)",
+      process: [
+        "1. Tiếp nhận yêu cầu, phân tích mục tiêu",
+        "2. Thiết kế giao diện (UI/UX) và wireframe",
+        "3. Lập trình và phát triển website",
+        "4. Kiểm thử và chạy thử nghiệm",
+        "5. Hướng dẫn sử dụng và bàn giao",
+        "6. Hỗ trợ kỹ thuật và bảo trì",
+      ],
+      packages: [
+        { name: "Gói One-Page", price: "3.000.000", details: "Website đơn trang, phù hợp cho giới thiệu cá nhân, sự kiện." },
+        { name: "Gói Doanh Nghiệp", price: "10.000.000", details: "Website đa trang, giới thiệu sản phẩm/dịch vụ chi tiết." },
+        { name: "Gói E-commerce", price: "25.000.000", details: "Website bán hàng đầy đủ tính năng, tích hợp thanh toán." },
+      ],
+      benefits: [
+        "Giao diện độc đáo, tối ưu trên mọi thiết bị",
+        "Tăng độ tin cậy và uy tín cho doanh nghiệp",
+        "Hỗ trợ SEO, dễ dàng lên top tìm kiếm",
+        "Tùy chỉnh linh hoạt theo nhu cầu riêng",
+      ],
+      images: ["/website-design.jpg", "/website-design-2.jpg", "/website-design-3.jpg"],
+    },
+  };
+  return services[id as keyof typeof services] || null;
+};
 
-  return projects[id as keyof typeof projects] || null
-}
+export function ServiceDetail({ serviceId }: ServiceDetailProps) {
+  const [selectedImage, setSelectedImage] = useState(0);
+  const service = getServiceById(serviceId);
 
-export function ProjectDetail({ projectId }: ProjectDetailProps) {
-  const [selectedImage, setSelectedImage] = useState(0)
-  const project = getProjectById(projectId)
-
-  if (!project) {
+  if (!service) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl text-white mb-4">Project Not Found</h1>
-        <Link href="/projects">
-          <Button className="bg-accent-blue hover:bg-accent-blue/80">Back to Projects</Button>
+        <h1 className="text-2xl text-white mb-4">Dịch vụ không tồn tại</h1>
+        <Link href="/services">
+          <Button>Quay lại trang dịch vụ</Button>
         </Link>
       </div>
-    )
+    );
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Active":
-        return "bg-green-500/20 text-green-400 border-green-500/30"
-      case "Completed":
-        return "bg-blue-500/20 text-blue-400 border-blue-500/30"
-      case "Planning":
-        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-      case "On Hold":
-        return "bg-red-500/20 text-red-400 border-red-500/30"
+      case "Theo hợp đồng":
+        return "bg-primary/10 text-primary border-primary/20";
       default:
-        return "bg-gray-500/20 text-gray-400 border-gray-500/30"
+        return "bg-gray-500/10 text-gray-500 border-gray-500/20";
     }
-  }
-
-  const getRiskColor = (risk: string) => {
-    switch (risk) {
-      case "Low":
-        return "text-green-400"
-      case "Medium":
-        return "text-yellow-400"
-      case "High":
-        return "text-red-400"
-      default:
-        return "text-gray-400"
-    }
-  }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Back Button */}
       <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-6">
-        <Link href="/projects">
-          <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
+        <Link href="/services" passHref>
+          <Button variant="outline" className="border-border/50 hover:bg-card/50 bg-transparent">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
+            Quay lại trang dịch vụ
           </Button>
         </Link>
       </motion.div>
@@ -132,29 +137,24 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex flex-wrap items-center gap-4 mb-4">
-              <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
-              <Badge variant="secondary" className="bg-dark-secondary text-gray-300">
-                {project.category}
+              <Badge className={getStatusColor(service.status)}>{service.status}</Badge>
+              <Badge variant="secondary" className="bg-secondary/20 text-secondary-foreground border-border/50">
+                {service.type}
               </Badge>
-              <div className="flex items-center gap-1">
-                <Target className="w-4 h-4 text-gray-400" />
-                <span className={getRiskColor(project.riskLevel)}>{project.riskLevel} Risk</span>
-              </div>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">{project.title}</h1>
-
-            <p className="text-xl text-gray-300 leading-relaxed">{project.longDescription}</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{service.title}</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">{service.longDescription}</p>
           </motion.div>
 
           {/* Image Gallery */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <Card className="bg-dark-secondary border-gray-700">
+            <Card className="bg-card border-border/50">
               <CardContent className="p-0">
                 <div className="relative">
                   <Image
-                    src={project.images[selectedImage] || "/placeholder.svg"}
-                    alt={project.title}
+                    src={service.images[selectedImage] || "/placeholder.svg"}
+                    alt={service.title}
                     width={800}
                     height={400}
                     className="w-full h-64 md:h-96 object-cover rounded-t-lg"
@@ -162,17 +162,17 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                 </div>
                 <div className="p-4">
                   <div className="flex gap-2 overflow-x-auto">
-                    {project.images.map((image, index) => (
+                    {service.images.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedImage(index)}
                         className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
-                          selectedImage === index ? "border-accent-blue" : "border-gray-600 hover:border-gray-500"
+                          selectedImage === index ? "border-primary" : "border-gray-600 hover:border-gray-500"
                         }`}
                       >
                         <Image
                           src={image || "/placeholder.svg"}
-                          alt={`${project.title} ${index + 1}`}
+                          alt={`${service.title} ${index + 1}`}
                           width={80}
                           height={80}
                           className="w-full h-full object-cover"
@@ -188,27 +188,49 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
           {/* Detailed Information Tabs */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 bg-dark-secondary">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="financials">Financials</TabsTrigger>
-                <TabsTrigger value="team">Team</TabsTrigger>
-                <TabsTrigger value="risks">Risks</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-3 bg-card border-border/50">
+                <TabsTrigger value="overview">Tổng quan</TabsTrigger>
+                <TabsTrigger value="process">Quy trình</TabsTrigger>
+                <TabsTrigger value="packages">Gói giá</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-4">
-                <Card className="bg-dark-secondary border-gray-700">
+                <Card className="bg-card border-border/50">
                   <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-accent-blue" />
-                      Key Features
+                    <CardTitle className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                      Lợi ích khi sử dụng dịch vụ
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {project.keyFeatures.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-accent-blue rounded-full" />
-                          <span className="text-gray-300">{feature}</span>
+                    <ul className="space-y-3">
+                      {service.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start gap-3 p-3 bg-secondary/10 rounded-lg">
+                          <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                          <span className="text-muted-foreground">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="process" className="space-y-4">
+                <Card className="bg-card border-border/50">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <List className="w-5 h-5 text-primary" />
+                      Quy trình thực hiện
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {service.process.map((step, index) => (
+                        <div key={index} className="flex items-center gap-4 p-3 bg-secondary/10 rounded-lg">
+                          <div className="w-8 h-8 rounded-full flex items-center justify-center bg-primary/20 text-primary font-bold">
+                            {index + 1}
+                          </div>
+                          <span className="text-muted-foreground whitespace-pre-line">{step}</span>
                         </div>
                       ))}
                     </div>
@@ -216,71 +238,25 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="financials" className="space-y-4">
-                <Card className="bg-dark-secondary border-gray-700">
+              <TabsContent value="packages" className="space-y-4">
+                <Card className="bg-card border-border/50">
                   <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
-                      <BarChart3 className="w-5 h-5 text-accent-blue" />
-                      Financial Projections
+                    <CardTitle className="flex items-center gap-2">
+                      <DollarSign className="w-5 h-5 text-primary" />
+                      Các gói dịch vụ
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {project.financialProjections.map((projection, index) => (
-                        <div key={index} className="flex justify-between items-center p-3 bg-dark-primary rounded-lg">
-                          <span className="text-white font-semibold">{projection.year}</span>
-                          <div className="text-right">
-                            <p className="text-gray-300">Revenue: {projection.revenue}</p>
-                            <p className="text-green-400">Profit: {projection.profit}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="team" className="space-y-4">
-                <Card className="bg-dark-secondary border-gray-700">
-                  <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
-                      <Users className="w-5 h-5 text-accent-blue" />
-                      Project Team
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {project.team.map((member, index) => (
-                        <div key={index} className="flex items-center gap-4 p-3 bg-dark-primary rounded-lg">
-                          <div className="w-12 h-12 bg-accent-blue/20 rounded-full flex items-center justify-center">
-                            <Users className="w-6 h-6 text-accent-blue" />
-                          </div>
+                      {service.packages.map((pkg, index) => (
+                        <div key={index} className="flex justify-between items-center p-3 bg-secondary/10 rounded-lg">
                           <div>
-                            <h4 className="text-white font-semibold">{member.name}</h4>
-                            <p className="text-gray-400">{member.role}</p>
-                            <p className="text-sm text-gray-500">{member.experience} experience</p>
+                            <h4 className="text-foreground font-semibold">{pkg.name}</h4>
+                            <p className="text-sm text-muted-foreground">{pkg.details}</p>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="risks" className="space-y-4">
-                <Card className="bg-dark-secondary border-gray-700">
-                  <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
-                      <Shield className="w-5 h-5 text-accent-blue" />
-                      Risk Factors
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {project.riskFactors.map((risk, index) => (
-                        <div key={index} className="flex items-start gap-3 p-3 bg-dark-primary rounded-lg">
-                          <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-gray-300">{risk}</span>
+                          <div className="text-right">
+                            <p className="text-primary font-semibold">{pkg.price} VNĐ</p>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -293,105 +269,30 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 
         {/* Sidebar */}
         <div className="space-y-6">
-          {/* Investment Summary */}
+          {/* Service Summary */}
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-            <Card className="bg-dark-secondary border-gray-700">
+            <Card className="bg-card border-border/50">
               <CardHeader>
-                <CardTitle className="text-white">Investment Summary</CardTitle>
+                <CardTitle>Thông tin chung</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Total Investment</span>
-                    <span className="text-white font-semibold">{project.investment}</span>
+                    <span className="text-muted-foreground">Giá gói</span>
+                    <span className="text-primary font-semibold">{service.price} VNĐ</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Expected Returns</span>
-                    <span className="text-green-400 font-semibold">{project.expectedROI}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Min. Investment</span>
-                    <span className="text-white font-semibold">{project.minInvestment}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Duration</span>
-                    <span className="text-white">{project.duration}</span>
+                    <span className="text-muted-foreground">Thời gian hợp đồng</span>
+                    <span className="text-foreground">{service.contractDuration}</span>
                   </div>
                 </div>
 
-                {/* Progress */}
-                <div>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-400">Funding Progress</span>
-                    <span className="text-white">{project.progress}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div className="bg-accent-blue h-2 rounded-full" style={{ width: `${project.progress}%` }} />
-                  </div>
-                  <div className="flex justify-between text-sm mt-2">
-                    <span className="text-gray-400">Raised: {project.totalRaised}</span>
-                    <span className="text-gray-400">Target: {project.targetAmount}</span>
-                  </div>
-                </div>
-
-                <Button className="w-full bg-accent-blue hover:bg-accent-blue/80">Invest Now</Button>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Project Details */}
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
-            <Card className="bg-dark-secondary border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-white">Project Details</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-4 h-4 text-accent-blue" />
-                    <div>
-                      <p className="text-gray-400 text-sm">Location</p>
-                      <p className="text-white">{project.location}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-accent-blue" />
-                    <div>
-                      <p className="text-gray-400 text-sm">Start Date</p>
-                      <p className="text-white">{new Date(project.startDate).toLocaleDateString()}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-4 h-4 text-accent-blue" />
-                    <div>
-                      <p className="text-gray-400 text-sm">End Date</p>
-                      <p className="text-white">{new Date(project.endDate).toLocaleDateString()}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Building className="w-4 h-4 text-accent-blue" />
-                    <div>
-                      <p className="text-gray-400 text-sm">Project Manager</p>
-                      <p className="text-white">{project.projectManager}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Users className="w-4 h-4 text-accent-blue" />
-                    <div>
-                      <p className="text-gray-400 text-sm">Total Investors</p>
-                      <p className="text-white">{project.investors}</p>
-                    </div>
-                  </div>
-                </div>
+                <Button className="w-full">Liên hệ tư vấn</Button>
               </CardContent>
             </Card>
           </motion.div>
         </div>
       </div>
     </div>
-  )
+  );
 }
