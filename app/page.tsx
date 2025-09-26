@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero-section";
 import { FeaturedProducts } from "@/components/sections/featured-products";
-import { OurServices } from "@/components/sections/services";
+import { OurServices } from "@/components/sections/our-services";
 import { PartnersSection } from "@/components/sections/partners-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CTASection } from "@/components/sections/cta-section";

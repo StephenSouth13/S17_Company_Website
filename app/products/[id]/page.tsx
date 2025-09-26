@@ -18,6 +18,9 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
+  // Chuyển đổi productId từ string sang number
+  const productId = Number(params.id)
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -39,7 +42,8 @@ export default function ProductPage({ params }: ProductPageProps) {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <ProductDetail productId={params.id} />
+        {/* Truyền productId đã được chuyển đổi */}
+        <ProductDetail productId={productId} />
         <RelatedProducts />
       </main>
       <Footer />

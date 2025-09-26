@@ -123,8 +123,8 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">
                   {language === "vi"
-                    ? "123 Đường ABC, Quận 1, TP.HCM, Việt Nam"
-                    : "123 ABC Street, District 1, Ho Chi Minh City, Vietnam"}
+                    ? "123 Trương Định, Quận 3, TP.HCM, Việt Nam"
+                    : "123 Truong Dinh , District 3, Ho Chi Minh City, Vietnam"}
                 </span>
               </div>
               <div className="flex items-center space-x-3">

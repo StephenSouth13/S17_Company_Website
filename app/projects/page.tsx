@@ -1,6 +1,6 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { ProjectsShowcase } from "@/components/projects/projects-showcase"
+import { ProjectsShowcase } from "@/components/services/projects-showcase"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

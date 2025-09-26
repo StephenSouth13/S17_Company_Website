@@ -1,4 +1,4 @@
-import { ProjectDetail } from "@/components/projects/project-detail"
+import { ProjectDetail } from "@/components/services/project-detail"
 import type { Metadata } from "next"
 
 interface ProjectPageProps {

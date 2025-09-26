@@ -39,76 +39,8 @@ export function OurServices() {
       status: "Theo hợp đồng",
       process: null,
     },
-    {
-      id: 4,
-      title: "Thiết kế bộ nhận diện thương hiệu",
-      type: "Dịch vụ",
-      description: "Thiết kế bộ nhận diện thương hiệu theo nhu cầu khách hàng.",
-      image: "/brand-identity.jpg",
-      price: "5.000.000 - 50.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 5,
-      title: "Thiết kế ấn phẩm Social + Ecommerce",
-      type: "Dịch vụ",
-      description: "Gói thiết kế theo tháng, hoặc gói lẻ. Các hình ảnh cover, banner, hình ảnh chạy chiến dịch cho sàn,...",
-      image: "/social-ecommerce-design.jpg",
-      price: "5.000.000 - 20.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 6,
-      title: "Sản xuất Video",
-      type: "Dịch vụ",
-      description: "Gói sản xuất video đăng các kênh online, tối thiểu 15 video/tháng.",
-      image: "/video-production.jpg",
-      price: "15.000.000 - 50.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 7,
-      title: "Đào tạo theo chuyên đề",
-      type: "Dịch vụ",
-      description: "Đào tạo theo các chuyên đề yêu cầu, giảng viên từ cấp bậc Diễn giả chuyên môn đến Giáo sư, phù hợp yêu cầu khách hàng.",
-      image: "/specialized-training.jpg",
-      price: "5.000.000 - 30.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 8,
-      title: "Tổ chức workshop",
-      type: "Dịch vụ",
-      description: "Tổ chức các chương trình workshop theo buổi, quy mô 10 - 100 người tham dự.",
-      image: "/workshop-event.jpg",
-      price: "5.000.000 - 30.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 9,
-      title: "Tổ chức Diễn đàn",
-      type: "Dịch vụ",
-      description: "Tổ chức các diễn đàn lớn, nhiều nội dung, quy mô tầm trung, số lượng hơn 300 người.",
-      image: "/forum-event.jpg",
-      price: "50.000.000 - 300.000.000",
-      status: "Theo hợp đồng",
-      process: null,
-    },
-    {
-      id: 10,
-      title: "Tổ chức sự kiện",
-      type: "Dịch vụ",
-      description: "Tổ chức các sự kiện, triển lãm quy mô lớn, số lượng hơn 1.000 người tham dự, diễn ra nhiều ngày,...",
-      image: "/large-scale-event.jpg",
-      price: "> 1 tỷ",
-      status: "Theo hợp đồng",
-      process: null,
-    },
+    
+    
   ];
 
   const getStatusColor = (status: string) => {
@@ -213,11 +145,18 @@ export function OurServices() {
           </div>
 
           {/* View All Button */}
-          <div className="text-center">
-            <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/10 bg-transparent">
-              Xem tất cả dịch vụ
-            </Button>
-          </div>
+<div className="text-center">
+  <Button
+    size="lg"
+    variant="outline"
+    className="border-primary/20 hover:bg-primary/10 bg-transparent"
+    asChild // Thêm prop này vào đây
+  >
+    <Link href="/projects">
+      Xem tất cả dịch vụ
+    </Link>
+  </Button>
+</div>
         </div>
       </div>
     </section>
