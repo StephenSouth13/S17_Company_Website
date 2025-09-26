@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PenTool, Globe, Briefcase, Video, Book, Mic } from "lucide-react";
-import Link from "next/link"; // Thêm import Link
+import Link from "next/link";
 
 export function OurServices() {
   const services = [
@@ -37,6 +37,51 @@ export function OurServices() {
       price: "5.000.000 - 30.000.000",
       status: "Theo hợp đồng",
     },
+    {
+      id: 4,
+      title: "Thiết kế ấn phẩm Social + Ecommerce",
+      type: "Dịch vụ",
+      description: "Dịch vụ thiết kế các ấn phẩm cho kênh truyền thông, social media, thương mại điện tử: banner, poster, hình ảnh sản phẩm, bài đăng.",
+      image: "/social-ecommerce.jpg",
+      price: "1.500.000 - 5.000.000",
+      status: "Theo hợp đồng",
+    },
+    {
+      id: 5,
+      title: "Sản xuất Video",
+      type: "Dịch vụ",
+      description: "Sản xuất video marketing, video giới thiệu sản phẩm, video viral, TVC quảng cáo, và các loại video khác theo yêu cầu.",
+      image: "/video-production.jpg",
+      price: "5.000.000 - 50.000.000",
+      status: "Theo hợp đồng",
+    },
+    {
+      id: 6,
+      title: "Đào tạo theo chuyên đề",
+      type: "Dịch vụ",
+      description: "Tổ chức các khóa đào tạo ngắn hạn chuyên sâu về marketing, truyền thông, kỹ năng mềm cho doanh nghiệp và cá nhân.",
+      image: "/training.jpg",
+      price: "Giá thỏa thuận",
+      status: "Theo hợp đồng",
+    },
+    {
+      id: 7,
+      title: "Tổ chức workshop",
+      type: "Dịch vụ",
+      description: "Tổ chức workshop chuyên nghiệp, từ khâu lên ý tưởng, chuẩn bị nội dung, đến quản lý sự kiện và truyền thông sau sự kiện.",
+      image: "/workshop.jpg",
+      price: "Giá thỏa thuận",
+      status: "Theo hợp đồng",
+    },
+    {
+      id: 8,
+      title: "Tổ chức sự kiện",
+      type: "Dịch vụ",
+      description: "Tổ chức các sự kiện quy mô lớn: khai trương, kỷ niệm, ra mắt sản phẩm, hội thảo, hội nghị.",
+      image: "/event-management.jpg",
+      price: "Giá thỏa thuận",
+      status: "Theo hợp đồng",
+    },
   ];
 
   const getStatusColor = (status: string) => {
@@ -56,6 +101,15 @@ export function OurServices() {
         return <Globe className="h-4 w-4 text-primary" />;
       case "Thiết kế logo":
         return <PenTool className="h-4 w-4 text-primary" />;
+      case "Thiết kế ấn phẩm Social + Ecommerce":
+        return <PenTool className="h-4 w-4 text-primary" />;
+      case "Sản xuất Video":
+        return <Video className="h-4 w-4 text-primary" />;
+      case "Đào tạo theo chuyên đề":
+        return <Book className="h-4 w-4 text-primary" />;
+      case "Tổ chức workshop":
+      case "Tổ chức sự kiện":
+        return <Mic className="h-4 w-4 text-primary" />;
       default:
         return <Briefcase className="h-4 w-4 text-primary" />;
     }
@@ -76,7 +130,7 @@ export function OurServices() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             {services.map((service) => (
               <Card
                 key={service.id}
@@ -95,14 +149,14 @@ export function OurServices() {
                   </div>
                 </div>
 
-                <CardHeader className="pb-3 flex-grow"> {/* Thêm flex-grow */}
+                <CardHeader className="pb-3 flex-grow">
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground line-clamp-3">{service.description}</p>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
+                <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-center space-x-2">
                       {getIcon(service.title)}
@@ -114,7 +168,7 @@ export function OurServices() {
                   </div>
                 </CardContent>
 
-                <CardFooter className="pt-0">
+                <CardFooter className="pt-0 mt-auto">
                   <Link href={`/services/${service.id}`} className="w-full">
                     <Button className="w-full" size="sm">
                       Tìm hiểu thêm
@@ -127,11 +181,11 @@ export function OurServices() {
 
           {/* View All Button */}
           <div className="text-center">
-            <Button size="lg" asChild>
-              <Link href="/services">
+            <Link href="/services">
+              <Button size="lg">
                 Xem tất cả dịch vụ
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

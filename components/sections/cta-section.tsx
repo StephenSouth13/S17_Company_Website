@@ -13,7 +13,7 @@ export function CTASection() {
               Sẵn sàng bắt đầu <span className="gradient-text">hành trình</span> của bạn?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Tham gia cùng hàng nghìn khách hàng đã tin tưởng S17 Trading để phát triển tài chính và kinh doanh của họ.
+              Tham gia cùng hàng nghìn khách hàng đã tin tưởng Trung tâm phát triển S17 để phát triển tài chính và kinh doanh của họ.
             </p>
           </div>
 
@@ -25,7 +25,7 @@ export function CTASection() {
                 <h3 className="text-xl font-semibold">Đăng ký nhận thông tin</h3>
               </div>
               <p className="text-muted-foreground">
-                Nhận những cập nhật mới nhất về sản phẩm, Dịch Vụ đầu tư và ưu đãi đặc biệt
+                Nhận những cập nhật mới nhất về Sản phẩm, Dịch Vụ và ưu đãi đặc biệt
               </p>
             </div>
 
@@ -53,7 +53,7 @@ export function CTASection() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button size="lg" className="px-8 py-3 text-lg font-semibold animate-glow">
-              Khám phá Dịch Vụ đầu tư
+              Khám phá Dịch Vụ tại S17
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
