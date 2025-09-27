@@ -158,15 +158,40 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--background);
+    background: rgb(var(--background));
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: rgb(var(--primary));
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
+    background: rgb(var(--accent));
   }
+}
+
+/* Gradient border wrapper for sections */
+.section-container {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: rgb(var(--card));
+  padding: clamp(1rem, 2.5vw, 2rem);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.06);
+}
+.section-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0,119,200,0.5), rgba(255,208,109,0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.dark .section-container {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.4);
+  background: rgb(var(--card));
 }
 
 .gradient-text {

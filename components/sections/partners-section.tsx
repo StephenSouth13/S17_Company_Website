@@ -14,7 +14,7 @@ export function PartnersSection() {
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto section-container">
           {/* Section Header */}
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-2xl md:text-3xl font-bold">

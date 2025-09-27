@@ -7,7 +7,6 @@ import { OurServices } from "@/components/sections/our-services";
 import { PartnersSection } from "@/components/sections/partners-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CTASection } from "@/components/sections/cta-section";
-import { Providers } from './providers';
 
 // Thêm metadata riêng cho trang này
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <Providers>
       <div className="min-h-screen bg-background">
         <Header />
         <main>
@@ -31,6 +29,5 @@ export default function HomePage() {
         </main>
         <Footer />
       </div>
-    </Providers>
   );
 }
