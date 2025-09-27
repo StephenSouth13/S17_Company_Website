@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { PenTool, Globe, Briefcase, Video, Book, Mic } from "lucide-react";
 import Link from "next/link";
+import ContactForm from "@/components/contact/ContactForm";
 
 export function OurServices() {
   const services = [
@@ -168,13 +169,17 @@ export function OurServices() {
                   </div>
                 </CardContent>
 
-                <CardFooter className="pt-0 mt-auto">
-                  <Link href={`/services/${service.id}`} className="w-full">
-                    <Button className="w-full" size="sm">
-                      Tìm hiểu thêm
-                    </Button>
-                  </Link>
-                </CardFooter>
+                <CardFooter className="pt-0 mt-auto flex gap-2">
+  <Link href={`/services/${service.id}`} className="flex-1">
+    <Button className="w-full" size="sm">
+      Tìm hiểu thêm
+    </Button>
+  </Link>
+  <div className="flex-1">
+    <ContactForm triggerLabel="Liên hệ" />
+  </div>
+</CardFooter>
+
               </Card>
             ))}
           </div>
