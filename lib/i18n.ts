@@ -267,7 +267,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "Home",
       products: "Products",
-      services: "services",
+      services: "Services",
       about: "About",
       contact: "Contact",
       login: "Login",
