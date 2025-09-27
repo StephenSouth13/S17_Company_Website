@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { Providers } from "./providers"
 import "./globals.css"
-
+import BackToTop from "@/components/BackToTop"; // import nút back to top
 const workSans = Work_Sans({
   subsets: ["latin"],
   variable: "--font-work-sans",
@@ -58,6 +58,7 @@ export default function RootLayout({
           <Providers>
             {children}
           </Providers>
+          <BackToTop /> {/* Nút back to top */}
           <Analytics />
         </Suspense>
       </body>

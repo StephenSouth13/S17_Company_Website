@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Star, ShoppingCart, Eye, Heart } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/components/cart/cart-context"
-
+import ContactForm from "@/components/contact/ContactForm_2";
 // Định nghĩa kiểu dữ liệu cho sản phẩm
 interface Product {
   id: number;
@@ -238,16 +238,23 @@ export function FeaturedProducts() {
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter className="p-4 pt-0">
-                  <Button 
-                    className="w-full" 
-                    size="sm"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    <ShoppingCart className="h-4 w-4 mr-2" />
-                    Thêm vào giỏ
-                  </Button>
-                </CardFooter>
+                <CardFooter className="p-4 pt-0 flex flex-col sm:flex-row sm:gap-2 gap-2">
+  {/* Thêm vào giỏ */}
+  <Button
+    className="w-full sm:w-1/2 flex items-center justify-center"
+    size="sm"
+    onClick={() => handleAddToCart(product)}
+  >
+    <ShoppingCart className="h-4 w-4 mr-2" />
+    Thêm vào giỏ
+  </Button>
+
+  {/* Liên hệ */}
+  <div className="w-full sm:w-1/2">
+    <ContactForm triggerLabel="Liên hệ" />
+  </div>
+</CardFooter>
+
               </Card>
             ))}
           </div>

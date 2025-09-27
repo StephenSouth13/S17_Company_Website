@@ -30,10 +30,10 @@ export default function ContactForm({ triggerLabel }: { triggerLabel?: string })
       <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <DialogHeader className="mb-4">
           <DialogTitle className="text-2xl font-bold text-foreground dark:text-white">
-            Liên hệ với Ms. Khánh
+            Liên hệ với Ms. Khánh hoặc Mr. Vinh
           </DialogTitle>
           <p className="text-sm text-muted-foreground dark:text-gray-300">
-            Điền thông tin để được tư vấn nhanh qua số <strong>0909002207</strong>.
+            Điền thông tin để được tư vấn nhanh qua số <strong>0909002207(Ms. Khánh) & 0972641322( Mr. Vinh )</strong>
           </p>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -70,3 +70,4 @@ export default function ContactForm({ triggerLabel }: { triggerLabel?: string })
     </Dialog>
   )
 }
+
