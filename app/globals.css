@@ -6,30 +6,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Light Theme - S17 Brand Colors */
-  --background: 255 255 255; /* White */
-  --foreground: 28 28 28; /* Near-black for contrast */
-  --card: 255 255 255;
+  /* Light Theme - Brand Colors */
+  --background: 245 246 248; /* light gray background thay vì trắng tinh */
+  --foreground: 28 28 28; /* text gần đen */
+
+  --card: 255 255 255; /* card trắng để nổi bật trên background */
   --card-foreground: 28 28 28;
+
   --popover: 255 255 255;
   --popover-foreground: 28 28 28;
   
   --primary: 0 119 200; /* Main Blue: #0077C8 */
-  --primary-foreground: 255 255 255; /* White for text on blue */
+  --primary-foreground: 255 255 255;
   
-  --secondary: 255 208 109; /* Accent Yellow: #FFD06D */
-  --secondary-foreground: 28 28 28; /* Black for text on yellow */
+  --secondary: 240 240 240; /* subtle gray cho section phụ */
+  --secondary-foreground: 28 28 28;
   
-  --muted: 247 247 247; /* Light Gray */
-  --muted-foreground: 120 120 120; /* Medium Gray for muted text */
+  --muted: 247 247 247;
+  --muted-foreground: 120 120 120;
   
-  --accent: 255 208 109; /* Accent Yellow: #FFD06D */
+  --accent: 255 208 109; /* Accent Yellow */
   --accent-foreground: 28 28 28;
   
   --destructive: 239 68 68; /* Red */
-  --destructive-foreground: 255 255 255; /* White */
+  --destructive-foreground: 255 255 255;
   
-  --border: 230 230 230; /* Light Gray for borders */
+  --border: 225 225 225;
   --input: 230 230 230;
   --ring: 0 119 200;
   
@@ -52,24 +54,26 @@
 }
 
 .dark {
-  /* Dark Theme - S17 Brand Colors */
-  --background: 18 18 18; /* Darkest Gray */
-  --foreground: 240 240 240; /* Off-white for text */
-  --card: 28 28 28; /* Dark Gray */
+  /* Dark Theme - Brand Colors */
+  --background: 18 18 18; /* dark gray nền */
+  --foreground: 240 240 240;
+
+  --card: 28 28 28; /* card đậm hơn background */
   --card-foreground: 240 240 240;
-  --popover: 28 28 28;
+
+  --popover: 32 32 32;
   --popover-foreground: 240 240 240;
 
-  --primary: 255 255 255; /* White, prominent on dark background */
-  --primary-foreground: 18 18 18; /* Darkest Gray */
+  --primary: 0 119 200; /* giữ màu xanh brand */
+  --primary-foreground: 255 255 255;
   
-  --secondary: 45 45 45; /* Darker secondary for background */
-  --secondary-foreground: 240 240 240; /* Off-white */
+  --secondary: 38 38 38; 
+  --secondary-foreground: 240 240 240;
   
   --muted: 45 45 45;
-  --muted-foreground: 160 160 160; /* Lighter Gray */
+  --muted-foreground: 160 160 160;
   
-  --accent: 255 208 109; /* Accent Yellow: #FFD06D */
+  --accent: 255 208 109;
   --accent-foreground: 18 18 18;
   
   --destructive: 239 68 68;
@@ -77,7 +81,7 @@
   
   --border: 50 50 50;
   --input: 50 50 50;
-  --ring: 240 240 240;
+  --ring: 0 119 200;
   
   --chart-1: 0 119 200;
   --chart-2: 255 208 109;
@@ -85,19 +89,20 @@
   --chart-4: 150 150 150;
   --chart-5: 200 200 200;
 
-  --sidebar: 28 28 28;
+  --sidebar: 24 24 24;
   --sidebar-foreground: 240 240 240;
   --sidebar-primary: 0 119 200;
   --sidebar-primary-foreground: 255 255 255;
   --sidebar-accent: 255 208 109;
   --sidebar-accent-foreground: 240 240 240;
   --sidebar-border: 50 50 50;
-  --sidebar-ring: 240 240 240;
+  --sidebar-ring: 0 119 200;
 }
 
 @theme inline {
   --font-sans: "Work Sans", var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -117,15 +122,18 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -137,26 +145,25 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Chỉ border cho card, popover, sidebar */
+  .card, .popover, .sidebar {
+    @apply border border-border;
   }
 
   ::-webkit-scrollbar {
     width: 8px;
   }
-
   ::-webkit-scrollbar-track {
     background: var(--background);
   }
-
   ::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 4px;
   }
-
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
   }
