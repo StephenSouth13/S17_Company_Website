@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail } from "lucide-react";
-import { ArrowRight, Mail } from "lucide-react";
 
 export function CTASection() {
   return (
