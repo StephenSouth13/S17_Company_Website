@@ -119,7 +119,7 @@ export function OurServices() {
   return (
     <section className="py-24 bg-card/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto section-container">
           {/* Section Header */}
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">

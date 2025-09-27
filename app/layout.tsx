@@ -52,7 +52,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi" className="dark">
+    <html lang="vi" suppressHydrationWarning>
       <body className={`font-sans ${workSans.variable} ${openSans.variable} antialiased`}>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>

@@ -171,14 +171,14 @@ export function FeaturedProducts() {
   return (
     <section className="py-24">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto section-container">
           {/* Section Header */}
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Sản phẩm <span className="gradient-text">nổi bật</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Khám phá các sản phẩm thuần thực vật tươi ngon, chất lượng được đảm bảo.
+              Khám phá các sản phẩm thuần thực vật tươi ngon, chất lượng ��ược đảm bảo.
             </p>
           </div>
 

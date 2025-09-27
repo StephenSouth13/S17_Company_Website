@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail } from "lucide-react"
 
 export function CTASection() {
   return (
     <section className="py-24 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-4xl mx-auto text-center space-y-8 section-container">
           {/* Main CTA */}
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
