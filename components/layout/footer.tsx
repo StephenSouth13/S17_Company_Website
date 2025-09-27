@@ -49,7 +49,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-[#FFD06D]">{t.footer.company.title}</h3>
             <ul className="space-y-2">
-              {["home", "products", "services", "about", "contact"].map((slug) => (
+              {(["home", "products", "services", "about", "contact"] as const).map((slug) => (
                 <li key={slug}>
                   <Link
                     href={`/${slug === "home" ? "" : slug}`}
@@ -111,7 +111,7 @@ export function Footer() {
         <div className="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-white/70">© {currentYear} S17 Trading. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            {["privacy", "terms", "cookies"].map((slug) => (
+            {(["privacy", "terms", "cookies"] as const).map((slug) => (
               <Link
                 key={slug}
                 href={`/${slug}`}

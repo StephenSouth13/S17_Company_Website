@@ -1,77 +1,77 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Target, Users, TrendingUp, Shield } from "lucide-react"
+"use client";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Target, Users, TrendingUp, Shield } from "lucide-react";
+
+const features = [
+  {
+    icon: Target,
+    title: "S17 TRADING",
+    description:
+      "Tập trung vào thương mại & phân phối mọi sản phẩm và dịch vụ tại thị trường trong nước và quốc tế.",
+  },
+  {
+    icon: Users,
+    title: "S17 HOLDING",
+    description:
+      "Nắm giữ và định hướng phát triển, đảm bảo chuẩn mực về sản phẩm tài chính và nhân sự cho toàn bộ hệ thống công ty thành viên.",
+  },
+  {
+    icon: TrendingUp,
+    title: "S17 INVESTING",
+    description:
+      "Đầu tư chiến lược, tập trung phát triển nhân sự & triển khai các dự án trọng điểm thuộc S17 Holding.",
+  },
+];
 
 export function AboutSection() {
-  const features = [
-    {
-      icon: Target,
-      title: "Tầm nhìn rõ ràng",
-      description: "Trở thành nền tảng thương mại điện tử và đầu tư hàng đầu Việt Nam",
-    },
-    {
-      icon: Users,
-      title: "Đội ngũ chuyên nghiệp",
-      description: "Hơn 50 chuyên gia giàu kinh nghiệm trong lĩnh vực thương mại và đầu tư",
-    },
-    {
-      icon: TrendingUp,
-      title: "Tăng trưởng bền vững",
-      description: "Cam kết mang lại giá trị lâu dài cho khách hàng và đối tác",
-    },
-    {
-      icon: Shield,
-      title: "Uy tín đáng tin cậy",
-      description: "Được chứng nhận và giám sát bởi các cơ quan quản lý nhà nước",
-    },
-  ]
-
   return (
-    <section className="py-24 bg-card/30">
+    <section className="py-24 bg-card/10">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Về <span className="gradient-text">S17 Trading</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Chúng tôi là đối tác tin cậy, mang đến những giải pháp thương mại điện tử và đầu tư tối ưu cho khách hàng
-              trên toàn quốc.
-            </p>
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Về <span className="gradient-text">S17 Group</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4 leading-relaxed">
+            Chúng tôi là đối tác tin cậy, mang đến các giải pháp thương mại điện tử, đầu tư và quản lý doanh nghiệp toàn diện.
+          </p>
+        </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {features.map((feature, index) => (
-              <Card
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-center">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div
                 key={index}
-                className="group hover:shadow-lg transition-all duration-300 hover:scale-105 bg-card/50 border-border/50"
+                className="relative w-64 h-64 group"
               >
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                {/* Hexagon border */}
+                <div className="absolute inset-0">
+                  <div
+                    className="w-full h-full rounded-[30%] border-4 border-transparent"
+                    style={{
+                      borderImage: "linear-gradient(45deg, #FFD06D, #0077C8) 1",
+                      clipPath:
+                        "polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)",
+                    }}
+                  />
+                </div>
 
-          {/* Mission Statement */}
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 gradient-text">Sứ mệnh của chúng tôi</h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              Tạo ra một hệ sinh thái thương mại điện tử và đầu tư toàn diện, nơi mọi khách hàng đều có thể tiếp cận
-              những sản phẩm chất lượng cao và các cơ hội đầu tư sinh lời một cách dễ dàng và an toàn.
-            </p>
-            <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/10 bg-transparent">
-              Tìm hiểu thêm về chúng tôi
-            </Button>
-          </div>
+                {/* Icon */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 w-20 h-20 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                  <Icon className="h-10 w-10 text-[#0077C8]" />
+                </div>
+
+                {/* Text */}
+                <div className="absolute bottom-6 w-full px-4 text-center">
+                  <h3 className="text-lg font-bold text-[#0077C8] mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  )
+  );
 }
