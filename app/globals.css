@@ -146,12 +146,22 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300 ease-in-out;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
   }
 
   /* Chỉ border cho card, popover, sidebar */
   .card, .popover, .sidebar {
-    @apply border border-border;
+    @apply border border-border bg-card;
+    border-color: rgb(var(--border));
+    background-color: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    transition: background-color 250ms, border-color 250ms, color 250ms;
+  }
+
+  button, a, input, textarea, select {
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 160ms ease;
   }
 
   ::-webkit-scrollbar {
@@ -167,36 +177,82 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--accent));
   }
-}
 
-/* Gradient border wrapper for sections */
-.section-container {
-  position: relative;
-  border-radius: var(--radius-xl);
-  background: rgb(var(--card));
-  padding: clamp(1rem, 2.5vw, 2rem);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.06);
-}
-.section-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(0,119,200,0.5), rgba(255,208,109,0.5));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-.dark .section-container {
-  box-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.4);
-  background: rgb(var(--card));
-}
+  /* Theme toggle styles */
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: transparent;
+  }
+  .theme-toggle .icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+  }
+  .theme-toggle .icon-wrap.sun {
+    transform-origin: center;
+  }
+  .theme-toggle .icon-wrap.moon {
+    transform-origin: center;
+  }
 
-.gradient-text {
-  background: linear-gradient(90deg, #0077C8, #FFD06D);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Subtle glass nav background */
+  header {
+    transition: background-color 300ms ease, box-shadow 300ms ease;
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+
+  /* Button primary helpers */
+  .btn-gradient {
+    background: linear-gradient(90deg, rgb(var(--primary)), rgb(var(--accent)));
+    color: rgb(var(--primary-foreground));
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Section container refinement */
+  .section-container {
+    position: relative;
+    border-radius: var(--radius-xl);
+    background: rgb(var(--card));
+    padding: clamp(1rem, 2.5vw, 2rem);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.06);
+    transition: background-color 250ms, box-shadow 250ms;
+  }
+  .section-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(0,119,200,0.38), rgba(255,208,109,0.24));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .dark .section-container {
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.4);
+    background: rgb(var(--card));
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #0077C8, #FFD06D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle .icon-wrap, button, a { transition: none !important; }
+  }
 }
