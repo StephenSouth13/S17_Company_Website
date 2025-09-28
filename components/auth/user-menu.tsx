@@ -52,11 +52,8 @@ export function UserMenu() {
     return (
       <>
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="sm" onClick={() => handleLogin("login")}>
+          <Button variant="default" size="sm" onClick={() => handleLogin("login")}>
             Đăng nhập
-          </Button>
-          <Button size="sm" onClick={() => handleLogin("register")}>
-            Đăng ký
           </Button>
         </div>
         <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} defaultTab={authModalTab} />
