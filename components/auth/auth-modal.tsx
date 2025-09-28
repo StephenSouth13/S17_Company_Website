@@ -73,7 +73,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-card border-border">
+      <DialogContent className="sm:max-w-lg bg-card">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold gradient-text">
             {activeTab === "login" ? "Đăng nhập" : "Đăng ký"}
@@ -81,21 +81,16 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
         </DialogHeader>
 
         <div className="space-y-6">
-          {/* Tab Switcher */}
-          <div className="flex bg-muted/30 rounded-lg p-1">
+          <div className="text-center space-y-2">
+            <p className="text-sm text-muted-foreground">
+              {activeTab === "login" ? "Chào mừng trở lại!" : "Tạo tài khoản để bắt đầu trải nghiệm."}
+            </p>
             <Button
-              variant={activeTab === "login" ? "default" : "ghost"}
-              className="flex-1 h-10"
-              onClick={() => setActiveTab("login")}
+              variant="link"
+              className="p-0 h-auto text-sm"
+              onClick={() => setActiveTab(activeTab === "login" ? "register" : "login")}
             >
-              Đăng nhập
-            </Button>
-            <Button
-              variant={activeTab === "register" ? "default" : "ghost"}
-              className="flex-1 h-10"
-              onClick={() => setActiveTab("register")}
-            >
-              Đăng ký
+              {activeTab === "login" ? "Chưa có tài khoản? Tạo tài khoản" : "Đã có tài khoản? Đăng nhập"}
             </Button>
           </div>
 
