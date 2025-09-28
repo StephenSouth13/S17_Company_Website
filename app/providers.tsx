@@ -5,10 +5,11 @@ import { LanguageProvider } from "@/contexts/language-context"
 import { CartProvider } from "@/components/cart/cart-context"
 import { type ReactNode } from "react"
 
+import { useEffect } from "react"
+
 export function Providers({ children }: { children: ReactNode }) {
-  // Install defensive globals to avoid noisy third-party errors (e.g., FullStory) breaking dev RSC fetch
-  // This is intentionally conservative: only intercept network errors for known external hosts
-  if (typeof window !== "undefined") {
+  useEffect(() => {
+    // Install defensive globals to avoid noisy third-party errors (e.g., FullStory) breaking dev RSC fetch
     try {
       const win = window as any
       if (!win.__fetch_wrapped) {
@@ -17,11 +18,9 @@ export function Providers({ children }: { children: ReactNode }) {
         win.fetch = (...args: any[]) => {
           try {
             const url = args[0]
-            // If the call is to FullStory or its edge domain, swallow network failures and return a 204 Response
             const isFullStory = typeof url === "string" && url.includes("fullstory.com")
             return originalFetch(...args).catch((err: any) => {
               if (isFullStory && err && (err.message === "Failed to fetch" || err.name === "TypeError")) {
-                // Return an empty successful Response so callers won't crash
                 try {
                   return Promise.resolve(new Response(null, { status: 204, statusText: "No Content" }))
                 } catch (e) {
@@ -35,29 +34,44 @@ export function Providers({ children }: { children: ReactNode }) {
           }
         }
       }
+
+      const onUnhandled = (ev: PromiseRejectionEvent) => {
+        try {
+          const reason = ev.reason
+          if (reason && typeof reason === "object") {
+            const msg = (reason.message || "").toString()
+            const stack = (reason.stack || "").toString()
+            if (msg.includes("Failed to fetch") || stack.includes("fullstory.com")) {
+              ev.preventDefault()
+            }
+          }
+        } catch (e) {
+          // noop
+        }
+      }
+
+      window.addEventListener("unhandledrejection", onUnhandled)
+      // store so HMR can cleanup later
+      ;(window as any).__fs_unhandled_cb = onUnhandled
+
+      return () => {
+        // cleanup
+        try {
+          if ((window as any).__fetch_wrapped) {
+            // we cannot reliably restore original fetch if other code wrapped it; so only remove our marker
+            delete (window as any).__fetch_wrapped
+          }
+        } catch (e) {}
+        try {
+          const cb = (window as any).__fs_unhandled_cb
+          if (cb) window.removeEventListener("unhandledrejection", cb)
+          delete (window as any).__fs_unhandled_cb
+        } catch (e) {}
+      }
     } catch (e) {
       // ignore
     }
-
-    // Suppress unhandledrejection noise from third-party scripts in dev
-    const onUnhandled = (ev: PromiseRejectionEvent) => {
-      try {
-        const reason = ev.reason
-        if (reason && typeof reason === "object") {
-          const msg = (reason.message || "").toString()
-          const stack = (reason.stack || "").toString()
-          if (msg.includes("Failed to fetch") || stack.includes("fullstory.com")) {
-            ev.preventDefault()
-          }
-        }
-      } catch (e) {
-        // noop
-      }
-    }
-    window.addEventListener("unhandledrejection", onUnhandled)
-    // ensure removal on HMR; keep reference on window so we can cleanup if module reloads
-    ;(window as any).__fs_unhandled_cb = onUnhandled
-  }
+  }, [])
 
   return (
     <ThemeProvider
