@@ -42,7 +42,7 @@ export function OurServices() {
       id: 4,
       title: "Thiết kế ấn phẩm Social + Ecommerce",
       type: "Dịch vụ",
-      description: "Dịch vụ thiết kế các ấn phẩm cho kênh truyền thông, social media, thương mại điện tử: banner, poster, hình ảnh sản phẩm, bài đăng.",
+      description: "Dịch vụ thiết kế các ấn phẩm cho kênh truyền thông, social media, thương mại ��iện tử: banner, poster, hình ảnh sản phẩm, bài đăng.",
       image: "/social-ecommerce.jpg",
       price: "1.500.000 - 5.000.000",
       status: "Theo hợp đồng",
@@ -117,7 +117,7 @@ export function OurServices() {
   };
 
   return (
-    <section className="py-24 bg-card/30">
+    <section className="py-16 bg-card/20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto section-container">
           {/* Section Header */}
