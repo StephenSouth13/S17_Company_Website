@@ -9,32 +9,8 @@ import { useEffect } from "react"
 
 export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
-    // Install defensive globals to avoid noisy third-party errors (e.g., FullStory) breaking dev RSC fetch
+    // Suppress unhandledrejection noise from third-party scripts (e.g., FullStory) in dev
     try {
-      const win = window as any
-      if (!win.__fetch_wrapped) {
-        const originalFetch = win.fetch.bind(win)
-        win.__fetch_wrapped = true
-        win.fetch = (...args: any[]) => {
-          try {
-            const url = args[0]
-            const isFullStory = typeof url === "string" && url.includes("fullstory.com")
-            return originalFetch(...args).catch((err: any) => {
-              if (isFullStory && err && (err.message === "Failed to fetch" || err.name === "TypeError")) {
-                try {
-                  return Promise.resolve(new Response(null, { status: 204, statusText: "No Content" }))
-                } catch (e) {
-                  return Promise.resolve(undefined)
-                }
-              }
-              return Promise.reject(err)
-            })
-          } catch (e) {
-            return originalFetch(...args)
-          }
-        }
-      }
-
       const onUnhandled = (ev: PromiseRejectionEvent) => {
         try {
           const reason = ev.reason
@@ -51,17 +27,9 @@ export function Providers({ children }: { children: ReactNode }) {
       }
 
       window.addEventListener("unhandledrejection", onUnhandled)
-      // store so HMR can cleanup later
       ;(window as any).__fs_unhandled_cb = onUnhandled
 
       return () => {
-        // cleanup
-        try {
-          if ((window as any).__fetch_wrapped) {
-            // we cannot reliably restore original fetch if other code wrapped it; so only remove our marker
-            delete (window as any).__fetch_wrapped
-          }
-        } catch (e) {}
         try {
           const cb = (window as any).__fs_unhandled_cb
           if (cb) window.removeEventListener("unhandledrejection", cb)
