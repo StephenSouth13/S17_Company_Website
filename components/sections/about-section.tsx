@@ -26,7 +26,7 @@ const features = [
 
 export function AboutSection() {
   return (
-    <section className="py-24 bg-card/10">
+    <section className="py-16 bg-card/10">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto section-container">
         <div className="text-center mb-16">
