@@ -11,5 +11,9 @@ type Props = NextThemesProviderProps & {
 }
 
 export function ThemeProvider({ children, ...props }: Props) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+  return (
+    <NextThemesProvider attribute="class" defaultTheme="system" {...props}>
+      {children}
+    </NextThemesProvider>
+  )
 }

@@ -24,28 +24,48 @@ export default function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <Breadcrumb className="mb-6">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Trang chủ</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/products">Sản phẩm</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Chi tiết sản phẩm</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
 
-        {/* Truyền productId đã được chuyển đổi */}
-        <ProductDetail productId={productId} />
-        <RelatedProducts />
+      <main className="w-full">
+        {/* Breadcrumb (contained) */}
+        <section className="w-full py-4">
+          <div className="container mx-auto px-4">
+            <Breadcrumb className="mb-0">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Trang chủ</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/products">Sản phẩm</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Chi tiết sản phẩm</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </section>
+
+        {/* Product detail section - full bleed background with contained content */}
+        <section className="w-full py-12">
+          <div className="container mx-auto px-4">
+            <div className="rounded-lg border border-border bg-card p-6">
+              <ProductDetail productId={productId} />
+            </div>
+          </div>
+        </section>
+
+        {/* Related products section */}
+        <section className="w-full py-12">
+          <div className="container mx-auto px-4">
+            <div className="rounded-lg border border-border bg-card p-6">
+              <RelatedProducts />
+            </div>
+          </div>
+        </section>
       </main>
+
       <Footer />
     </div>
   )

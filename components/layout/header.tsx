@@ -75,18 +75,19 @@ export function Header() {
       {/* Actions */}
       <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0 ml-auto">
         {/* Theme toggle */}
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-9 w-9 p-0 text-white hover:bg-white/10 transition-colors"
+        <button
+          aria-label="Toggle color theme"
+          className="theme-toggle"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          title="Toggle theme"
         >
-          {theme === "dark" ? (
-            <Sun className="h-5 w-5" />
-          ) : (
-            <Moon className="h-5 w-5" />
-          )}
-        </Button>
+          <span className={`icon-wrap sun ${theme === "dark" ? "opacity-0 scale-75" : "opacity-100 scale-100"}`}>
+            <Sun className="h-5 w-5 text-white" />
+          </span>
+          <span className={`icon-wrap moon ${theme === "dark" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
+            <Moon className="h-5 w-5 text-white" />
+          </span>
+        </button>
 
         <LanguageSwitcher />
         <CartSidebar />
