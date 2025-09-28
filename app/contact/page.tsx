@@ -21,12 +21,12 @@ export default function ContactPage() {
       <Header />
 
       {/* Main Content */}
-      <main className="flex-1 py-20 px-4">
+      <main className="flex-1 py-16 px-4">
         <div className="container mx-auto">
-          <Card className="w-full border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card className="w-full shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Phần thông tin liên hệ bên trái */}
-              <div className="p-10 lg:p-16 bg-primary/5 rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none flex flex-col justify-center">
+              <div className="p-10 lg:p-16 bg-primary/5 flex flex-col justify-center">
                 <CardTitle className="text-3xl md:text-4xl font-bold text-primary mb-4">
                   Kết nối với chúng tôi
                 </CardTitle>
