@@ -109,7 +109,7 @@ export function FeaturedProducts() {
       inStock: true,
       category: "Món chính",
       description: "Pizza với đế làm từ lúa mì nguyên cám và topping rau củ tươi ngon",
-      specs: ["Bánh", "Món chính", "Thực vật"],
+      specs: ["Bánh", "Món chính", "Thực v���t"],
     },
     {
       id: 7,
@@ -169,7 +169,7 @@ export function FeaturedProducts() {
   };
 
   return (
-    <section className="py-24">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto section-container">
           {/* Section Header */}
