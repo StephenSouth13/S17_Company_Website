@@ -1,3 +1,4 @@
+// components/layout/contact-form.tsx
 "use client"
 
 import { useState } from "react"
@@ -27,8 +28,8 @@ export default function ContactForm({ triggerLabel }: { triggerLabel?: string })
           {triggerLabel || "Liên hệ"}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
-        <DialogHeader className="mb-4">
+      <DialogContent className="fixed inset-0 m-auto w-fit h-fit !p-0 sm:max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
+        <DialogHeader className="mb-4 p-6">
           <DialogTitle className="text-2xl font-bold text-foreground dark:text-white">
             Liên hệ với Ms. Khánh hoặc Mr. Vinh
           </DialogTitle>
@@ -36,7 +37,7 @@ export default function ContactForm({ triggerLabel }: { triggerLabel?: string })
             Điền thông tin để được tư vấn nhanh qua số <strong>0909002207(Ms. Khánh) & 0972641322( Mr. Vinh )</strong>
           </p>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 p-6 pt-0">
           <Input 
             placeholder="Họ và tên" 
             required 
@@ -70,4 +71,3 @@ export default function ContactForm({ triggerLabel }: { triggerLabel?: string })
     </Dialog>
   )
 }
-

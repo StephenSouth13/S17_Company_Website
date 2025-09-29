@@ -80,7 +80,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
     },
     3: {
       originalPrice: 45000,
-      images: ["/images/tra-trai-cay.jpg"],
+      images: ["/products/dautamfruit.png"],
       rating: 5,
       reviews: 8,
       inStock: true,
