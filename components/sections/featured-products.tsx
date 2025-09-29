@@ -178,7 +178,7 @@ export function FeaturedProducts() {
               Sản phẩm <span className="gradient-text">nổi bật</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Khám phá các sản phẩm thuần thực vật tươi ngon, chất lượng ��ược đảm bảo.
+              Khám phá các sản phẩm thuần thực vật tươi ngon, chất lượng được đảm bảo.
             </p>
           </div>
 
