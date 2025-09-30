@@ -73,26 +73,34 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-card border-border">
-        <DialogHeader>
+      <DialogContent className="w-full max-w-md md:max-w-lg bg-white dark:bg-gray-900 border-border shadow-2xl max-h-[95vh] overflow-hidden flex flex-col">
+        <DialogHeader className="flex-shrink-0">
           <DialogTitle className="text-center text-2xl font-bold gradient-text">
             {activeTab === "login" ? "Đăng nhập" : "Đăng ký"}
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto space-y-6 pr-1 scrollbar-thin" style={{ maxHeight: 'calc(95vh - 12rem)' }}>
           {/* Tab Switcher */}
-          <div className="flex bg-muted/30 rounded-lg p-1">
+          <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1 relative overflow-hidden">
             <Button
               variant={activeTab === "login" ? "default" : "ghost"}
-              className="flex-1 h-10"
+              className={`flex-1 h-10 relative z-10 transition-all duration-300 ${
+                activeTab === "login" 
+                  ? "bg-white dark:bg-gray-700 text-primary shadow-md" 
+                  : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary"
+              }`}
               onClick={() => setActiveTab("login")}
             >
               Đăng nhập
             </Button>
             <Button
               variant={activeTab === "register" ? "default" : "ghost"}
-              className="flex-1 h-10"
+              className={`flex-1 h-10 relative z-10 transition-all duration-300 ${
+                activeTab === "register" 
+                  ? "bg-white dark:bg-gray-700 text-primary shadow-md" 
+                  : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary"
+              }`}
               onClick={() => setActiveTab("register")}
             >
               Đăng ký
@@ -103,20 +111,20 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
           <div className="space-y-3">
             <Button
               variant="outline"
-              className="w-full h-12 bg-transparent border-border/50 hover:bg-muted/50"
+              className="w-full h-12 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-blue-50 hover:border-blue-500 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-200 group"
               onClick={() => handleSocialLogin("google")}
               disabled={isLoading}
             >
-              <Chrome className="h-5 w-5 mr-3" />
+              <Chrome className="h-5 w-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
               Tiếp tục với Google
             </Button>
             <Button
               variant="outline"
-              className="w-full h-12 bg-transparent border-border/50 hover:bg-muted/50"
+              className="w-full h-12 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-blue-50 hover:border-blue-600 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-200 group"
               onClick={() => handleSocialLogin("facebook")}
               disabled={isLoading}
             >
-              <Facebook className="h-5 w-5 mr-3" />
+              <Facebook className="h-5 w-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
               Tiếp tục với Facebook
             </Button>
           </div>
@@ -124,7 +132,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
           <div className="relative">
             <Separator />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="bg-card px-4 text-sm text-muted-foreground">hoặc</span>
+              <span className="bg-white dark:bg-gray-900 px-4 text-sm text-muted-foreground">hoặc</span>
             </div>
           </div>
 
@@ -183,12 +191,12 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
                     Ghi nhớ đăng nhập
                   </Label>
                 </div>
-                <Button variant="link" className="p-0 h-auto text-sm text-primary hover:underline">
+                <Button variant="link" className="p-0 h-auto text-sm text-primary hover:text-primary/80 hover:underline transition-colors duration-200">
                   Quên mật khẩu?
                 </Button>
               </div>
 
-              <Button type="submit" className="w-full h-12 animate-glow" disabled={isLoading}>
+              <Button type="submit" className="w-full h-12 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
                 {isLoading ? "Đang đăng nhập..." : "Đăng nhập"}
               </Button>
             </form>
@@ -213,7 +221,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="register-email">Email</Label>
                   <div className="relative">
@@ -309,11 +317,11 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
                   />
                   <Label htmlFor="agree-terms" className="text-sm leading-relaxed">
                     Tôi đồng ý với{" "}
-                    <Button variant="link" className="p-0 h-auto text-sm text-primary hover:underline">
+                    <Button variant="link" className="p-0 h-auto text-sm text-primary hover:text-primary/80 hover:underline transition-colors duration-200">
                       Điều khoản sử dụng
                     </Button>{" "}
                     và{" "}
-                    <Button variant="link" className="p-0 h-auto text-sm text-primary hover:underline">
+                    <Button variant="link" className="p-0 h-auto text-sm text-primary hover:text-primary/80 hover:underline transition-colors duration-200">
                       Chính sách bảo mật
                     </Button>
                   </Label>
@@ -333,14 +341,14 @@ export function AuthModal({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
                 </div>
               </div>
 
-              <Button type="submit" className="w-full h-12 animate-glow" disabled={isLoading}>
+              <Button type="submit" className="w-full h-12 bg-gradient-to-r from-green-500 to-primary hover:from-green-600 hover:to-primary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
                 {isLoading ? "Đang tạo tài khoản..." : "Tạo tài khoản"}
               </Button>
             </form>
           )}
 
           {/* Benefits */}
-          <div className="bg-muted/30 rounded-lg p-4 space-y-3">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-3">
             <h4 className="font-semibold text-sm">Lợi ích khi có tài khoản S17:</h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
               <div className="flex items-center space-x-2">
