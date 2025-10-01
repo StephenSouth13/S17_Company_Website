@@ -24,7 +24,7 @@ export default function HomePage() {
           <FeaturedProducts />
           <OurServices />
           <PartnersSection />
-          <AboutSection />
+    
           <CTASection />
         </main>
         <Footer />
