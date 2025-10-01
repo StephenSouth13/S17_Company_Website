@@ -196,10 +196,10 @@ export function OurServices() {
                   </Link>
                   <div className="flex-1">
                     <ContactForm 
-                        triggerLabel="Liên hệ ngay" 
-                        // Nút liên hệ nổi bật
-                        buttonClass={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`}
-                    />
+  triggerLabel="Liên hệ ngay" 
+  className={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`} 
+/>
+
                   </div>
                 </CardFooter>
               </Card>

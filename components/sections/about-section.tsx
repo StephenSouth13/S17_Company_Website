@@ -67,7 +67,7 @@ const S17_LOGO_SVG = (
 export function AboutSection() {
   return (
     // Nền tối và cao cấp
-    <section className="py-24 bg-white dark:bg-neutral-950 overflow-hidden">
+    <section className="py-10 bg-white dark:bg-neutral-950 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
