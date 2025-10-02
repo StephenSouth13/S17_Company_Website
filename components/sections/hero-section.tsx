@@ -17,7 +17,7 @@ export function HeroSection() {
 
   return (
     // SỬA: Đảm bảo section chiếm toàn bộ chiều cao màn hình, nhưng giới hạn trên mobile (dưới md) chỉ còn 65vh
-    <section className="relative h-[65vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-[30vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image (Static) */}
       <div className="absolute inset-0 z-0">
         <div
