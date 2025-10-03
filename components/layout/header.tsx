@@ -49,7 +49,7 @@ export function Header() {
           <Link href="/" className="transition-transform duration-300 hover:scale-105">
             <Image
               // Giữ nguyên logic logo, nhưng đảm bảo logo có độ tương phản cao trên nền xanh đậm
-              src={theme === "dark" ? "/s17-logo.png" : "/s17-logo.png"}
+              src={theme === "dark" ? "/logos17/logo.png" : "/logos17/logo.png"}
               alt="S17 Trading Logo"
               width={100}
               height={30}
