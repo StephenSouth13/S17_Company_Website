@@ -547,7 +547,7 @@ export const translations: Record<Language, Translations> = {
         viewAll: "Xem Tất Cả Dịch Vụ",
       },
       partners: {
-        title: "Đối Tác Tin Cậy",
+        title: "Hệ thống các công ty thành viên",
       },
       cta: {
         title: "Sẵn Sàng Bắt Đầu?",
