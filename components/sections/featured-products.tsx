@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, ShoppingCart, Eye, Heart, ArrowRight } from "lucide-react";
+import { Star, ShoppingCart, Eye, Heart, ArrowRight } from "lucide-react"; // Xóa PackageOpen thừa
 import Link from "next/link";
 import { useCart } from "@/components/cart/cart-context";
 import Image from "next/image";
@@ -174,7 +174,12 @@ export function FeaturedProducts() {
     }
   };
 
-  const handleAddToCartAndCheckout = (product: Product) => {
+  const handleAddToCart = (product: Product) => {
+    dispatch({ type: "ADD_ITEM", payload: product });
+    // Thêm logic thông báo hoặc chuyển hướng nếu cần
+  };
+
+  const handleBuyNow = (product: Product) => {
     dispatch({ type: "ADD_ITEM", payload: product });
     window.location.href = "/checkout";
   };
@@ -204,21 +209,30 @@ export function FeaturedProducts() {
             {products.map((product) => (
               <Card
                 key={product.id}
+                // Thêm h-full để cân bằng chiều cao Card
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border-neutral-200 bg-white shadow-xl shadow-neutral-200/50 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-200/40 dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-neutral-900/30 dark:hover:shadow-cyan-900/50"
               >
-                <div className="relative overflow-hidden">
+                {/* Tối ưu ảnh: Giữ tỉ lệ 1:1 và bo góc trên */}
+                <div className="relative overflow-hidden h-64 aspect-square rounded-t-xl">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    width={50}
-                    height={50}
-                    className="h-50 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill // Sử dụng fill để lấp đầy container
+                    style={{ objectFit: 'cover' }} // object-cover
+                    className="transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    priority={product.id <= 4}
                   />
-                  <div className="absolute left-4 top-4 flex gap-2">
-                    <Badge variant="secondary" className={`border ${getBadgeColor(product.badge)} rounded-full px-3 py-1 text-xs font-bold shadow-sm`}>
+                  {/* Badge */}
+                  <div className="absolute left-4 top-4 z-10 flex gap-2">
+                    <Badge 
+                      variant="secondary" 
+                      className={`border ${getBadgeColor(product.badge)} rounded-full px-3 py-1 text-xs font-bold shadow-md backdrop-blur-sm`}
+                    >
                       {product.badge}
                     </Badge>
                   </div>
+                  {/* Hover Actions */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="flex space-x-2">
                       <Button size="sm" variant="secondary" className="h-8 w-8 p-0" asChild>
@@ -239,6 +253,12 @@ export function FeaturedProducts() {
                       {product.name}
                     </h3>
                   </Link>
+                  
+                  {/* Mô tả sản phẩm */}
+                  <p className="line-clamp-2 text-sm text-neutral-500 dark:text-neutral-400 min-h-[40px]">
+                    {product.description}
+                  </p>
+
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
@@ -255,25 +275,34 @@ export function FeaturedProducts() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
                       <span className="text-lg font-bold text-cyan-600 dark:text-cyan-400">{product.price} VNĐ</span>
+                      {product.originalPrice && (
+                        <span className="text-sm text-neutral-400 line-through">{product.originalPrice} VNĐ</span>
+                      )}
                     </div>
                   </div>
                 </CardContent>
 
-                <CardFooter className="mt-auto flex gap-3 pt-0 pb-6 px-6">
-                  <Link href={`/products/${product.id}`} className="flex-1">
+                {/* Fix Button: Sử dụng layout 2 nút chồng nhau (stacked) để tránh tràn và đẹp hơn */}
+                <CardFooter className="mt-auto flex flex-col gap-3 pt-0 pb-6 px-6">
+                  {/* Nút 1: Thêm vào giỏ hàng (Màu nhẹ) */}
+                  <div className="w-full">
                     <Button
-                      variant="ghost"
-                      className={`w-full ${ACCENT_COLOR_CLASS} border border-cyan-200 dark:border-cyan-700 hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-all duration-300 rounded-xl font-semibold`}
-                    >
-                      Xem chi tiết
-                    </Button>
-                  </Link>
-                  <div className="flex-1">
-                    <Button
-                      onClick={() => handleAddToCartAndCheckout(product)}
-                      className={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`}
+                      onClick={() => handleAddToCart(product)}
+                      variant="outline" // Đổi sang outline để phân biệt
+                      className={`w-full ${ACCENT_COLOR_CLASS} border-cyan-400 dark:border-cyan-700 hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-all duration-300 rounded-xl font-semibold`}
                     >
                       <ShoppingCart className="h-4 w-4 mr-2" />
+                      Thêm vào giỏ hàng
+                    </Button>
+                  </div>
+                  
+                  {/* Nút 2: Mua ngay (Màu nhấn) */}
+                  <div className="w-full">
+                    <Button
+                      onClick={() => handleBuyNow(product)}
+                      className={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`}
+                    >
+                      <ArrowRight className="h-4 w-4 mr-2" />
                       Mua ngay
                     </Button>
                   </div>
@@ -282,7 +311,7 @@ export function FeaturedProducts() {
             ))}
           </div>
 
-          {/* View All Button - Nổi bật hơn */}
+          {/* View All Button */}
           <div className="text-center">
             <Link href="/products">
               <Button size="lg" className={`group ${ACCENT_BG_CLASS} text-lg rounded-full px-8 h-14 font-extrabold shadow-xl shadow-cyan-300/50 transition-all duration-300 transform hover:scale-[1.02]`}>

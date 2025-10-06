@@ -14,36 +14,39 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#FFD06D]">
-                <Building2 className="h-6 w-6 text-[#0077C8]" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold" style={{ background: 'linear-gradient(90deg, #FFD06D, #0077C8)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
-                  S17
-                </span>
-                <span className="text-xs text-white/80">Trading</span>
-              </div>
-            </div>
-            <p className="text-sm text-white/80 leading-relaxed">
-              {language === "vi"
-                ? "Nền tảng thương mại điện tử và đầu tư hàng đầu, mang đến những sản phẩm chất lượng cao và cơ hội đầu tư sinh lời."
-                : "Leading e-commerce and investment platform, bringing premium products and profitable investment opportunities."}
-            </p>
-            <div className="flex space-x-2">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <Button
-                  key={i}
-                  variant="ghost"
-                  size="sm"
-                  className="h-9 w-9 p-0 hover:bg-white/20 transition-colors"
-                >
-                  <Icon className="h-4 w-4 text-white" />
-                </Button>
-              ))}
-            </div>
-          </div>
+<div className="space-y-4">
+  <div className="flex items-center justify-center">
+    <div className="w-35 h-35 flex items-center">
+      <img
+        src="/logos17/logo.png"
+        alt="S17 Trading"
+        className="w-full h-full object-contain drop-shadow-lg transition-transform duration-300 hover:scale-105"
+      />
+    </div>
+  </div>
+
+
+
+  <p className="text-sm text-white/80 leading-relaxed">
+    {language === "vi"
+      ? "Nền tảng thương mại điện tử và đầu tư hàng đầu, mang đến những sản phẩm chất lượng cao và cơ hội đầu tư sinh lời."
+      : "Leading e-commerce and investment platform, bringing premium products and profitable investment opportunities."}
+  </p>
+
+  <div className="flex space-x-2">
+    {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+      <Button
+        key={i}
+        variant="ghost"
+        size="sm"
+        className="h-9 w-9 p-0 hover:bg-white/20 transition-colors"
+      >
+        <Icon className="h-4 w-4 text-white" />
+      </Button>
+    ))}
+  </div>
+</div>
+
 
           {/* Company Links */}
           <div className="space-y-4">
