@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { PenTool, Globe, Briefcase, Video, Book, Mic, ArrowRight } from "lucide-react";
 import Link from "next/link";
 // Giả định ContactForm đã được import đúng
-import ContactForm from "@/components/contact/ContactForm"; 
+import ContactForm from "@/components/contact/ContactForm";
 import Image from "next/image";
 
 // Màu nhấn chính: Cyan (Xanh lục lam)
@@ -21,8 +21,8 @@ export function OurServices() {
       title: "Chăm sóc các kênh truyền thông",
       type: "Dịch vụ",
       description: "Gói chăm sóc các kênh truyền thông: Facebook, Website, Các kênh Social, Các kênh E-com. Bao gồm nội dung + hình ảnh + Video.",
-      // Placeholder image URL - Teal/Cyan
-      image: "services/csktt.png", 
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Chăm sóc các kênh truyền thông.png",
       price: "4.500.000 - 15.000.000",
       status: "Theo hợp đồng",
     },
@@ -31,7 +31,8 @@ export function OurServices() {
       title: "Thiết kế và xây dựng website",
       type: "Dịch vụ",
       description: "Thiết kế website từ căn bản đến nâng cao, bao gồm các dịch vụ trọn gói hoặc theo nhu cầu khách hàng: Domain/ Hosting, Website onepage, Website diễn giả, Website giới thiệu, Website bán hàng.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=THIET+KE+WEBSITE",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Thiết kế và xây dựng website.png",
       price: "3.000.000 - 30.000.000",
       status: "Theo hợp đồng",
     },
@@ -40,7 +41,8 @@ export function OurServices() {
       title: "Thiết kế logo",
       type: "Dịch vụ",
       description: "Thiết kế logo theo yêu cầu khách hàng.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=LOGO+THUONG+HIEU",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Thiết kế logo.png",
       price: "5.000.000 - 30.000.000",
       status: "Theo hợp đồng",
     },
@@ -49,7 +51,8 @@ export function OurServices() {
       title: "Thiết kế ấn phẩm Social + Ecommerce",
       type: "Dịch vụ",
       description: "Dịch vụ thiết kế các ấn phẩm cho kênh truyền thông, social media, thương mại điện tử: banner, poster, hình ảnh sản phẩm, bài đăng.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=AN+PHAM+SOCIAL+ECOM",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Thiết kế ấn phẩm Social + Ecommerce.png",
       price: "1.500.000 - 5.000.000",
       status: "Theo hợp đồng",
     },
@@ -58,7 +61,8 @@ export function OurServices() {
       title: "Sản xuất Video",
       type: "Dịch vụ",
       description: "Sản xuất video marketing, video giới thiệu sản phẩm, video viral, TVC quảng cáo, và các loại video khác theo yêu cầu.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=SAN+XUAT+VIDEO",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Sản xuất Video.png", // Giả định "Sản xuất Videokế logo.png" là lỗi đánh máy và ảnh đúng là "Sản xuất Video.png"
       price: "5.000.000 - 50.000.000",
       status: "Theo hợp đồng",
     },
@@ -67,7 +71,8 @@ export function OurServices() {
       title: "Đào tạo theo chuyên đề",
       type: "Dịch vụ",
       description: "Tổ chức các khóa đào tạo ngắn hạn chuyên sâu về marketing, truyền thông, kỹ năng mềm cho doanh nghiệp và cá nhân.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=KHOA+DAO+TAO",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Đào tạo theo chuyên đề.png",
       price: "Giá thỏa thuận",
       status: "Theo hợp đồng",
     },
@@ -76,7 +81,8 @@ export function OurServices() {
       title: "Tổ chức workshop",
       type: "Dịch vụ",
       description: "Tổ chức workshop chuyên nghiệp, từ khâu lên ý tưởng, chuẩn bị nội dung, đến quản lý sự kiện và truyền thông sau sự kiện.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=TO+CHUC+WORKSHOP",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Tổ chức workshop.png",
       price: "Giá thỏa thuận",
       status: "Theo hợp đồng",
     },
@@ -85,10 +91,13 @@ export function OurServices() {
       title: "Tổ chức sự kiện",
       type: "Dịch vụ",
       description: "Tổ chức các sự kiện quy mô lớn: khai trương, kỷ niệm, ra mắt sản phẩm, hội thảo, hội nghị.",
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=TO+CHUC+SU+KIEN",
+      // FIX: Đường dẫn ảnh đã được sửa
+      image: "/services/Tổ chức sự kiện.png",
       price: "Giá thỏa thuận",
       status: "Theo hợp đồng",
     },
+    // Thêm các dịch vụ còn thiếu trong danh sách file (nếu có, nhưng hiện tại đã đủ 8 dịch vụ)
+    // Ví dụ: "Thiết kế bộ nhận diện thương hiệu.png" và "Tổ chức Diễn đàn.png" chưa có trong mảng services
   ];
 
   const getStatusColor = (status: string) => {
@@ -109,7 +118,6 @@ export function OurServices() {
       case "Thiết kế và xây dựng website":
         return <Globe className={iconClass} />;
       case "Thiết kế logo":
-        return <PenTool className={iconClass} />;
       case "Thiết kế ấn phẩm Social + Ecommerce":
         return <PenTool className={iconClass} />;
       case "Sản xuất Video":
@@ -131,10 +139,10 @@ export function OurServices() {
         <div className="mx-auto max-w-7xl">
           {/* Section Header - Tác động mạnh */}
           <div className="mb-16 space-y-6 text-center">
-            <Badge 
-                className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-4 py-1.5 shadow-md"
+            <Badge
+              className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-4 py-1.5 shadow-md"
             >
-                Giải pháp toàn diện
+              Giải pháp toàn diện
             </Badge>
             <h2 className="text-4xl font-extrabold md:text-5xl lg:text-6xl text-neutral-900 dark:text-neutral-50 leading-tight">
               Các dịch vụ <span className={`font-black ${ACCENT_COLOR_CLASS}`}>Đẳng cấp</span>
@@ -154,7 +162,7 @@ export function OurServices() {
               >
                 <div className="relative overflow-hidden">
                   <Image
-                    src={service.image || "https://placehold.co/500x300/EEEEEE/888888?text=SP"}
+                    src={service.image || "/services/placeholder.png"}
                     alt={service.title}
                     width={500}
                     height={300}
@@ -187,18 +195,18 @@ export function OurServices() {
 
                 <CardFooter className="mt-auto flex gap-3 pt-0 pb-6 px-6">
                   <Link href={`/services/${service.id}`} className="flex-1">
-                    <Button 
-                        variant="ghost"
-                        className={`w-full ${ACCENT_COLOR_CLASS} border border-cyan-200 dark:border-cyan-700 hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-all duration-300 rounded-xl font-semibold`}
+                    <Button
+                      variant="ghost"
+                      className={`w-full ${ACCENT_COLOR_CLASS} border border-cyan-200 dark:border-cyan-700 hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-all duration-300 rounded-xl font-semibold`}
                     >
                       Chi tiết
                     </Button>
                   </Link>
                   <div className="flex-1">
-                    <ContactForm 
-  triggerLabel="Liên hệ ngay" 
-  className={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`} 
-/>
+                    <ContactForm
+                      triggerLabel="Liên hệ ngay"
+                      className={`${ACCENT_BG_CLASS} w-full text-white shadow-lg shadow-cyan-300/50 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5`}
+                    />
 
                   </div>
                 </CardFooter>
