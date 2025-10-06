@@ -210,8 +210,8 @@ export function FeaturedProducts() {
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    width={500}
-                    height={300}
+                    width={100}
+                    height={100}
                     className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 flex gap-2">
