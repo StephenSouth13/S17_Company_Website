@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone } from "lucide-react"
 
 interface ContactFormProps {
-  triggerLabel?: string
+  triggerLabel: React.ReactNode;
   className?: string // ✅ thêm prop cho phép custom style nút trigger
 }
 

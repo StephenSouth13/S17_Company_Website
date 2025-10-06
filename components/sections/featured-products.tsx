@@ -187,12 +187,12 @@ export function FeaturedProducts() {
   return (
     // Nền sáng nhẹ, có thể chuyển sang tối
     <section className="pt-10 bg-neutral-50 dark:bg-neutral-900">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2">
         <div className="mx-auto max-w-7xl">
           {/* Section Header - Tác động mạnh */}
           <div className="mb-16 space-y-6 text-center">
             <Badge
-              className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-4 py-1.5 shadow-md"
+              className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-2 py-1.5 shadow-md"
             >
               Thực phẩm thuần chay
             </Badge>
