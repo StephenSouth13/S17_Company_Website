@@ -22,7 +22,7 @@ export function OurServices() {
       type: "Dịch vụ",
       description: "Gói chăm sóc các kênh truyền thông: Facebook, Website, Các kênh Social, Các kênh E-com. Bao gồm nội dung + hình ảnh + Video.",
       // Placeholder image URL - Teal/Cyan
-      image: "https://placehold.co/500x300/14B8A6/FFFFFF?text=CHAM+SOC+TRUYEN+THONG", 
+      image: "services/csktt.png", 
       price: "4.500.000 - 15.000.000",
       status: "Theo hợp đồng",
     },
