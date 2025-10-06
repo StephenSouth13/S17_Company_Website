@@ -18,7 +18,7 @@ export function PartnersSection() {
           {/* Section Header */}
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-2xl md:text-3xl font-bold">
-              Đối tác <span className="gradient-text">tin cậy</span>
+              Hệ thống các công ty thành viên
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Chúng tôi tự hào hợp tác cùng những tổ chức tài chính và doanh nghiệp hàng đầu Việt Nam

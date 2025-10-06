@@ -7,6 +7,7 @@ import { OurServices } from "@/components/sections/our-services";
 import { PartnersSection } from "@/components/sections/partners-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CTASection } from "@/components/sections/cta-section";
+import { S17_Eco } from '@/components/sections/s17_eco';
 
 // Thêm metadata riêng cho trang này
 export const metadata: Metadata = {
@@ -23,11 +24,12 @@ export default function HomePage() {
           <HeroSection />
           <FeaturedProducts />
           <OurServices />
+          <S17_Eco />
           <PartnersSection />
-    
           <CTASection />
         </main>
         <Footer />
       </div>
   );
 }
+

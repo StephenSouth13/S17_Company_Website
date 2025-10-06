@@ -210,9 +210,9 @@ export function FeaturedProducts() {
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    width={100}
-                    height={100}
-                    className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    width={50}
+                    height={50}
+                    className="h-50 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 flex gap-2">
                     <Badge variant="secondary" className={`border ${getBadgeColor(product.badge)} rounded-full px-3 py-1 text-xs font-bold shadow-sm`}>
