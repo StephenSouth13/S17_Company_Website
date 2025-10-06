@@ -1,4 +1,6 @@
-"use client";
+// components/services/services-showcase.client.tsx
+
+"use client"; // ĐÂY LÀ DÒNG BẮT BUỘC
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -17,6 +19,7 @@ const serviceStatuses = ["All Status", "Ongoing", "Completed", "Custom"];
 
 // Cập nhật dữ liệu dịch vụ
 const mockupServices = [
+  // ... (Giữ nguyên dữ liệu mảng mockupServices của bạn)
   {
     id: 1,
     title: "Chăm sóc các kênh truyền thông",
@@ -82,6 +85,7 @@ export default function ServiceShowcaseClient() {
 
   const { t, language } = useLanguage();
 
+  // ... (Giữ nguyên toàn bộ logic lọc và JSX render của bạn)
   const filteredServices = mockupServices.filter((service) => {
     const matchesSearch =
       service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
