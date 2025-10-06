@@ -62,7 +62,7 @@ export function OurServices() {
       type: "Dịch vụ",
       description: "Sản xuất video marketing, video giới thiệu sản phẩm, video viral, TVC quảng cáo, và các loại video khác theo yêu cầu.",
       // FIX: Đường dẫn ảnh đã được sửa
-      image: "/services/Sản xuất Video.png", // Giả định "Sản xuất Videokế logo.png" là lỗi đánh máy và ảnh đúng là "Sản xuất Video.png"
+      image: "/services/video.png", // Giả định "Sản xuất Videokế logo.png" là lỗi đánh máy và ảnh đúng là "Sản xuất Video.png"
       price: "5.000.000 - 50.000.000",
       status: "Theo hợp đồng",
     },

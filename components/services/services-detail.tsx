@@ -1,3 +1,4 @@
+"use client";
 import dynamic from 'next/dynamic'
 
 const ServiceDetailClient = dynamic(() => import('./services-detail.client'), { ssr: false })
