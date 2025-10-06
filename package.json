@@ -8,6 +8,13 @@
     "lint": "next lint",
     "start": "next start"
   },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["current"],
+      "cpu": ["current"]
+    },
+    "allowedBuiltDependencies": ["sharp"] 
+  },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.10.0",
