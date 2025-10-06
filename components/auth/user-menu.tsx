@@ -13,7 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { User, Settings, ShoppingBag, Heart, CreditCard, LogOut, Crown, TrendingUp } from "lucide-react"
-import { AuthModal } from "./auth-modal"
+import { AuthModal } from "./AuthModal"
 
 export function UserMenu() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
