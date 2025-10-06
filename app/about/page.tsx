@@ -1,7 +1,9 @@
-import dynamic from 'next/dynamic'
+// app/about/page.tsx (Đây vẫn là Server Component)
 
-const AboutClient = dynamic(() => import('@/components/about/about-client'), { ssr: false })
+import AboutPageWrapper from '@/components/about-client-wrapper'; // Import component bọc mới
+
+// LƯU Ý: Không cần import 'next/dynamic' ở đây nữa
 
 export default function AboutPage() {
-  return <AboutClient />
+  return <AboutPageWrapper />;
 }
