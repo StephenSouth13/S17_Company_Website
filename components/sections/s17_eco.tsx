@@ -2,14 +2,14 @@
 
 export function S17_Eco() {
   const partners = [
-    { name: "S17 E-Com", logo: "/logos17/logo.png" },
-    { name: "S17 Best Seller", logo: "/logos17/logo.png" },
-    { name: "S17 Seller Team", logo: "/logos17/logo.png" },
-    { name: "S17 Care", logo: "/logos17/logo.png" },
-    { name: "S17 Talk", logo: "/logos17/logo.png" },
-    { name: "S17 Edu", logo: "/logos17/logo.png" },
-    { name: "S17 Coaching 1one1", logo: "/logos17/logo.png" },
-    { name: "S17 Fund", logo: "/logos17/logo.png" },
+    { name: "S17 E-Com", logo: "/s17co/1.png" },
+    { name: "S17 Best Seller", logo: "/s17co/2.png" },
+    { name: "S17 Seller Team", logo: "/s17co/3.png" },
+    { name: "S17 Care", logo: "/s17co/4.png" },
+    { name: "S17 Talk", logo: "/s17co/5.png" },
+    { name: "S17 Edu", logo: "/s17co/6.png" },
+    { name: "S17 Coaching 1one1", logo: "/s17co/7.png" },
+    { name: "S17 Fund", logo: "/s17co/8.png" },
   ]
 
   return (
