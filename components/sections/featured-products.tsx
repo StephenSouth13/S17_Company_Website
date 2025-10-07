@@ -82,7 +82,7 @@ export function FeaturedProducts() {
       id: 4,
       name: "Socola ",
       price: "135.000 - 160.000",
-      originalPrice: "70.000",
+      originalPrice: "270.000",
       rating: 4.7,
       reviews: 30,
       image: "/products/socola.png",

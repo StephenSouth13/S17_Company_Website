@@ -134,13 +134,13 @@ export function OurServices() {
 
   return (
     // Nền sáng nhẹ, có thể chuyển sang tối
-    <section className="py-24 bg-neutral-50 dark:bg-neutral-900">
+    <section className="py-20 bg-neutral-50 dark:bg-neutral-900">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-7xl">
           {/* Section Header - Tác động mạnh */}
           <div className="mb-16 space-y-6 text-center">
             <Badge
-              className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-4 py-1.5 shadow-md"
+              className="text-sm font-semibold uppercase tracking-widest bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-300 rounded-full px-4 py-1 shadow-md"
             >
               Giải pháp toàn diện
             </Badge>
@@ -170,7 +170,7 @@ export function OurServices() {
                     className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 flex gap-2">
-                    <Badge variant="secondary" className={`border ${getStatusColor(service.status)} rounded-full px-3 py-1 text-xs font-bold shadow-sm`}>
+                    <Badge variant="secondary" className={`border ${getStatusColor(service.status)} rounded-full px-3 py-x text-xs font-bold shadow-sm`}>
                       {service.type}
                     </Badge>
                   </div>
